@@ -6,4 +6,13 @@
     <string name="rej">Nie masz jeszcze konta? Zarejestruj się</string>
     <string name="name">Imie</string>
     <string name="surname">Nazwisko</string>
+    <string name="email">E-mail</string>
+    <string name="phone">Nr. Telefonu</string>
+    <string name="card">Nr. Karty</string>
+    <string name="ccv">Nr. CCV</string>
+    <string name="street">Ulica</string>
+    <string name="flat">Nr.</string>
+    <string name="city">Miasto</string>
+    <string name="registernew">Zarejestruj</string>
+
 </resources>
