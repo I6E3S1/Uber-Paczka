@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context=".logowanie">
+    android:background="@color/colorPrimary">
+
+
 
     <EditText
         android:id="@+id/login"
@@ -45,6 +46,7 @@
         app:layout_constraintTop_toBottomOf="@id/password" />
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
