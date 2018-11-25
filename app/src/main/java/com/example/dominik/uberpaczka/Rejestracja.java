@@ -1,9 +1,9 @@
 package com.example.dominik.uberpaczka;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class rejestracja extends AppCompatActivity {
+public class Rejestracja extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
