@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".logowanie">
+    tools:context=".rejestracja">
 
     <EditText
-        android:id="@+id/login"
+        android:id="@+id/newlog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="8"
         android:hint="@string/login"
         android:textColorHint="@color/colorPrimaryDark"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.25"/>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/newpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="8"
@@ -32,29 +34,29 @@
         android:backgroundTint="@color/colorPrimaryDark"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login"/>
+        app:layout_constraintTop_toBottomOf="@id/newlog"/>
 
-    <Button
-        android:id="@+id/submit"
+    <EditText
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/log"
+        android:ems="8"
+        android:hint="@string/name"
+        android:textColorHint="@color/colorPrimaryDark"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/newpassword"/>
 
-    <Button
-        android:id="@+id/register"
+    <EditText
+        android:id="@+id/surname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/rej"
-        android:textSize="15sp"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/submit" />
-
-
+        android:ems="8"
+        android:hint="@string/surname"
+        android:textColorHint="@color/colorPrimaryDark"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name"/>
 </android.support.constraint.ConstraintLayout>
