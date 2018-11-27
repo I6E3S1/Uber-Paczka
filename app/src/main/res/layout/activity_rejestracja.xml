@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:scrollbars="vertical">
+            android:scrollbars="none">
 
             <ImageView
                 android:id="@+id/logo"
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:ems="8"
                 android:hint="@string/card"
-                android:inputType="number"
+                android:inputType="numberDecimal"
                 android:paddingTop="20dp"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="25sp"
@@ -143,6 +143,7 @@
                 android:paddingTop="20dp"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="25sp"
+                android:maxLength="3"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/karta" />

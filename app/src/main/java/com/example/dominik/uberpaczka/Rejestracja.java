@@ -15,20 +15,17 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class Rejestracja extends AppCompatActivity {
 
-    private static final String TAG = "rejestracja";
+    private static final String TAG = "rejBlad";
     private FirebaseAuth mAuth;
+    private UserInfo userInfo;
 
-    EditText name,newemail,newpassword;
+    EditText newemail, newpassword, name, surname, date, phone, karta, ccv, street, flat, city;
 
 
     @Override
@@ -38,37 +35,60 @@ public class Rejestracja extends AppCompatActivity {
 
         final Button button = findViewById(R.id.registernew);
 
+        newemail = findViewById(R.id.email);
+        newpassword = findViewById(R.id.newpassword);
         name = findViewById(R.id.name);
+        surname = findViewById(R.id.surname);
+        date = findViewById(R.id.date);
+        phone = findViewById(R.id.phone);
+        karta = findViewById(R.id.karta);
+        ccv = findViewById(R.id.ccv);
+        street = findViewById(R.id.street);
+        flat = findViewById(R.id.flat);
+        city = findViewById(R.id.city);
+
 
         mAuth = FirebaseAuth.getInstance();
+        userInfo = new UserInfo();
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                register();
-                android.content.Intent myIntent = new android.content.Intent(v.getContext(), MainActivity.class);
-                startActivity(myIntent);
+
+                String emailS = newemail.getText().toString();
+                String passwordS = newpassword.getText().toString();
+
+                register(emailS, passwordS, v);
+
+                /*                            android.content.Intent myIntent = new android.content.Intent(v.getContext(), MainActivity.class);
+                            startActivity(myIntent);*/
             }
         });
     }
 
-    void register(){
+    public void register(String emailS, String passwordS, final View v) {
 
-        newemail = findViewById(R.id.email);
-        newpassword = findViewById(R.id.newpassword);
-        String email = newemail.getText().toString();
-        String password = newpassword.getText().toString();
 
-        mAuth.createUserWithEmailAndPassword(email,password)
+        mAuth.createUserWithEmailAndPassword(emailS, passwordS)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+                            //success
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            //updateUI(user);
+                            userInfo.setUserID(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                            sendUserInfo();
+
+
+
+                            android.content.Intent myIntent = new android.content.Intent(v.getContext(), MainActivity.class);
+                            startActivity(myIntent);
+
+
+                            Toast.makeText(Rejestracja.this, "Prawidłowo utworzono konto.",
+                                     Toast.LENGTH_SHORT).show();
+                            //updateUI(user);*/
                         } else {
-                            // If sign in fails, display a message to the user.
+                            //fail
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(Rejestracja.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
@@ -79,23 +99,24 @@ public class Rejestracja extends AppCompatActivity {
         // [END create_user_with_email]
     }
 
-/*
-    void newUser(){
+
+    public void sendUserInfo()
+    {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        // [START add_ada_lovelace]
-        // Create a new user with a first and last name
-        Map<String, Object> user = new HashMap<>();
-
-        user.put("email", newemail.getText().toString());
-
-        user.put("password", newpassword.getText().toString());
-
-        user.put("name", name.getText().toString());
+        userInfo.setName(name.getText().toString());
+        userInfo.setSurname(surname.getText().toString());
+        userInfo.setDate(date.getText().toString());
+        userInfo.setPhone(phone.getText().toString());
+        userInfo.setKarta(karta.getText().toString());
+        userInfo.setCcv(ccv.getText().toString());
+        userInfo.setStreet(street.getText().toString());
+        userInfo.setFlat(flat.getText().toString());
+        userInfo.setCity(city.getText().toString());
 
         // Add a new document with a generated ID
         db.collection("users")
-                .add(user)
+                .add(userInfo.getUserInfo())
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
@@ -108,7 +129,6 @@ public class Rejestracja extends AppCompatActivity {
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
-        // [END add_ada_lovelace]
-    }*/
+    }
 
 }
