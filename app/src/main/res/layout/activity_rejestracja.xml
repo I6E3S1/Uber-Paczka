@@ -30,19 +30,20 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/logo_s"
+                android:contentDescription="@string/logo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/newlog"
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="8"
-                android:hint="@string/login"
+                android:hint="@string/email"
                 android:paddingTop="20dp"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="25sp"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/logo" />
@@ -60,7 +61,7 @@
                 android:textSize="25sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/newlog" />
+                app:layout_constraintTop_toBottomOf="@id/email" />
 
             <EditText
                 android:id="@+id/name"
@@ -91,12 +92,12 @@
                 app:layout_constraintTop_toBottomOf="@id/name" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="8"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
+                android:hint="@string/date"
+                android:inputType="date"
                 android:paddingTop="20dp"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="25sp"
@@ -116,7 +117,7 @@
                 android:textSize="25sp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/email" />
+                app:layout_constraintTop_toBottomOf="@id/date" />
 
             <EditText
                 android:id="@+id/karta"
