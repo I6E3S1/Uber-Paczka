@@ -1,8 +1,17 @@
 package com.example.dominik.uberpaczka;
 
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.widget.EditText;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static android.content.Context.CONNECTIVITY_SERVICE;
 
 public class UserInfo {
 
@@ -55,7 +64,6 @@ public class UserInfo {
     }
 
 
-
     public void setUserID(String userID) {
         this.userID = userID;
     }
@@ -87,6 +95,28 @@ public class UserInfo {
 
         return userInfoMap;
     }
+
+
+    boolean check(String message, EditText editText, String error, String errorMessage) {
+
+        Pattern pattern = Pattern.compile(error);
+        Matcher mat = pattern.matcher(message);
+
+        if (message.equalsIgnoreCase("")) {
+            editText.setError("Pole nie może pozostać puste");
+            return false;
+        } else {
+            if (mat.matches()) {
+                return true;
+            } else {
+                editText.setError(errorMessage);
+                return false;
+            }
+        }
+    }
+
+
+
 
 }
 

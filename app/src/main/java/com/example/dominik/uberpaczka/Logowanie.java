@@ -2,6 +2,7 @@ package com.example.dominik.uberpaczka;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -18,10 +19,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Logowanie extends AppCompatActivity {
 
     private static final String TAG = "logowanie_email";
+
     private FirebaseAuth mAuth;
+
+    private UserInfo userInfo;
 
     EditText email, password;
 
@@ -31,8 +38,10 @@ public class Logowanie extends AppCompatActivity {
         setContentView(R.layout.activity_logowanie);
 
         mAuth = FirebaseAuth.getInstance();
+        userInfo = new UserInfo();
 
         final Button subbutton = findViewById(R.id.submit);
+
 
         subbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -41,14 +50,17 @@ public class Logowanie extends AppCompatActivity {
                 String emailS = email.getText().toString();
                 String passwordS = password.getText().toString();
 
-                signin(emailS, passwordS, v);
+                //Tak wyglada email w wyrażeniach reguralnych
+                if (userInfo.check(emailS, email, "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", "Należy podać adres e-mail."))
+                    if (userInfo.check(passwordS, password, "\\w{6,}", "Za krótkie hasło."))
+                        signin(emailS, passwordS, v);
 
             }
         });
 
-        final Button rejbutton = findViewById(R.id.register);
+        final Button regButton = findViewById(R.id.register);
 
-        rejbutton.setOnClickListener(new View.OnClickListener() {
+        regButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 android.content.Intent myIntent = new android.content.Intent(v.getContext(), Rejestracja.class);
                 startActivity(myIntent);
@@ -64,23 +76,19 @@ public class Logowanie extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Log.v(TAG, "sukces");
-                            String user = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                            Log.v(TAG, "Zalogowano");
 
                             android.content.Intent myIntent = new android.content.Intent(v.getContext(), MainActivity.class);
                             startActivity(myIntent);
-                            /*Toast.makeText(Logowanie.this, user,
-                                     Toast.LENGTH_SHORT).show();*/
+
                         } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "blad", task.getException());
+                            Log.v(TAG, "Błąd logowania", task.getException());
                             Toast.makeText(Logowanie.this, "Błąd logowania.",
                                     Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
                     }
                 });
-
     }
+
+
 }
