@@ -2,7 +2,6 @@ package com.example.dominik.uberpaczka;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
@@ -27,11 +26,9 @@ public class Rejestracja extends AppCompatActivity {
 
 
     private static final String TAG = "rejBlad";
+    EditText newemail, newpassword, name, surname, date, phone, karta, ccv, street, flat, city;
     private FirebaseAuth mAuth;
     private UserInfo userInfo;
-
-    EditText newemail, newpassword, name, surname, date, phone, karta, ccv, street, flat, city;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,6 +158,11 @@ public class Rejestracja extends AppCompatActivity {
                                         }
         }
         return false;
+    }
+
+    public void checkoutInternetConnection() {
+        Context context = getApplicationContext();
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
     }
 
 
