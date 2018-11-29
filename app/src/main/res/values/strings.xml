@@ -15,5 +15,6 @@
     <string name="city">Miasto</string>
     <string name="registernew">Zarejestruj</string>
     <string name="logo">Logo</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

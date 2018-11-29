@@ -48,8 +48,11 @@ public class Logowanie extends AppCompatActivity {
                 //Tak wyglada email w wyrażeniach reguralnych
                 if (networkCheck(context))
                     if (userInfo.check(emailS, email, "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", "Należy podać adres e-mail."))
-                        if (userInfo.check(passwordS, password, "\\w{6,}", "Za krótkie hasło."))
+                        if (userInfo.check(passwordS, password, "\\w{6,}", "Za krótkie hasło.")) {
                             signin(emailS, passwordS, v);
+                            android.content.Intent myIntent = new android.content.Intent(v.getContext(), MapsActivity.class);
+                            startActivity(myIntent);
+                        }
 
             }
         });
