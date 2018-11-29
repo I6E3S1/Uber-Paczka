@@ -1,7 +1,6 @@
 package com.example.dominik.uberpaczka;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
@@ -21,19 +20,27 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import static com.example.dominik.uberpaczka.Launch.networkCheck;
+
 
 public class Rejestracja extends AppCompatActivity {
 
 
     private static final String TAG = "rejBlad";
-    EditText newemail, newpassword, name, surname, date, phone, karta, ccv, street, flat, city;
     private FirebaseAuth mAuth;
     private UserInfo userInfo;
+
+    EditText newemail, newpassword, name, surname, date, phone, karta, ccv, street, flat, city;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rejestracja);
+        final Context context = getApplicationContext();
+
 
         final Button button = findViewById(R.id.registernew);
 
@@ -60,7 +67,7 @@ public class Rejestracja extends AppCompatActivity {
 
                 String emailS = newemail.getText().toString();
                 String passwordS = newpassword.getText().toString();
-
+                if(networkCheck(context))
                 if (userInfo.check(emailS, newemail, "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", "Należy podać adres e-mail."))
                     if (userInfo.check(passwordS, newpassword, "\\w{6,}", "Za krótkie hasło."))
                         if (infoCheck())
@@ -159,13 +166,5 @@ public class Rejestracja extends AppCompatActivity {
         }
         return false;
     }
-
-    public void checkoutInternetConnection() {
-        Context context = getApplicationContext();
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
-    }
-
-
-
 
 }

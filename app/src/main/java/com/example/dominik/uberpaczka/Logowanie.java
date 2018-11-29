@@ -1,26 +1,21 @@
 package com.example.dominik.uberpaczka;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GetTokenResult;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import static com.example.dominik.uberpaczka.Launch.networkCheck;
 
 public class Logowanie extends AppCompatActivity {
 
@@ -36,7 +31,7 @@ public class Logowanie extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logowanie);
-
+        final Context context = getApplicationContext();
         mAuth = FirebaseAuth.getInstance();
         userInfo = new UserInfo();
 
@@ -51,9 +46,10 @@ public class Logowanie extends AppCompatActivity {
                 String passwordS = password.getText().toString();
 
                 //Tak wyglada email w wyrażeniach reguralnych
-                if (userInfo.check(emailS, email, "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", "Należy podać adres e-mail."))
-                    if (userInfo.check(passwordS, password, "\\w{6,}", "Za krótkie hasło."))
-                        signin(emailS, passwordS, v);
+                if (networkCheck(context))
+                    if (userInfo.check(emailS, email, "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", "Należy podać adres e-mail."))
+                        if (userInfo.check(passwordS, password, "\\w{6,}", "Za krótkie hasło."))
+                            signin(emailS, passwordS, v);
 
             }
         });
