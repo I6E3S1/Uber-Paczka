@@ -43,7 +43,7 @@ public class MapsActivity extends FragmentActivity implements
         OnMyLocationButtonClickListener,
         OnMyLocationClickListener,
         OnMapReadyCallback,
-        ActivityCompat.OnRequestPermissionsResultCallback  {
+        ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
@@ -56,19 +56,14 @@ public class MapsActivity extends FragmentActivity implements
     private boolean mPermissionDenied = false;
 
     private GoogleMap mMap;
-    private String TAG="AutoComplete";
+    private String TAG = "AutoComplete";
 
-    Button button;
-    EditText locationV;
     private PlaceAutocompleteFragment autocompleteFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
-//        locationV = findViewById(R.id.location);
-//        button = findViewById(R.id.search);
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -81,6 +76,22 @@ public class MapsActivity extends FragmentActivity implements
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
+
+                String g = String.valueOf(place.getName());
+
+
+                Geocoder geocoder = new Geocoder(getBaseContext());
+                List<Address> addresses = null;
+
+                try {
+                    addresses = geocoder.getFromLocationName(g, 3);
+                    if (addresses != null && !addresses.equals(""))
+                        search(addresses, mMap);
+
+                } catch (Exception e) {
+
+                }
+
                 Log.i(TAG, "Place: " + place.getName());
             }
 
@@ -91,41 +102,12 @@ public class MapsActivity extends FragmentActivity implements
             }
         });
 
-//        button.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//
-//                String g = locationV.getText().toString();
-//
-//                Geocoder geocoder = new Geocoder(getBaseContext());
-//                List<Address> addresses = null;
-//
-//                try {
-//                    // Getting a maximum of 3 Address that matches the input
-//                    // text
-//                    addresses = geocoder.getFromLocationName(g, 3);
-//                    if (addresses != null && !addresses.equals(""))
-//                        search(addresses,mMap);
-//
-//                } catch (Exception e) {
-//
-//                }
-//
-//            }
-//        });
     }
 
     protected void search(List<Address> addresses, GoogleMap map) {
 
-        double home_long,home_lat;
         String addressText;
-
-
-
-        Address address = (Address) addresses.get(0);
-        home_long = address.getLongitude();
-        home_lat = address.getLatitude();
+        Address address = addresses.get(0);
         LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
 
         addressText = String.format(
@@ -134,9 +116,7 @@ public class MapsActivity extends FragmentActivity implements
                         .getAddressLine(0) : "", address.getCountryName());
 
 
-
-
-        MarkerOptions markerOptions =  new MarkerOptions();
+        MarkerOptions markerOptions = new MarkerOptions();
 
         markerOptions.position(latLng);
         markerOptions.title(addressText);
@@ -151,14 +131,15 @@ public class MapsActivity extends FragmentActivity implements
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+        LatLng warsaw = new LatLng(52.227, 21.021);
+        map.moveCamera(CameraUpdateFactory.newLatLng(warsaw));
+        map.animateCamera(CameraUpdateFactory.zoomTo(10));
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
         enableMyLocation();
+       // map.moveCamera(CameraUpdateFactory.newLatLng());
     }
 
-    /**
-     * Enables the My Location layer if the fine location permission has been granted.
-     */
     private void enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {

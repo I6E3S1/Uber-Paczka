@@ -14,58 +14,29 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent" />
 
-        
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
 
-            <fragment
-                android:id="@+id/place_autocomplete_fragment"
-                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+    <fragment
+        android:id="@+id/place_autocomplete_fragment"
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-        </android.support.v7.widget.CardView>
-    </fragment>
-
-
-
-    <!--<android.support.v7.widget.CardView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--app:layout_constraintTop_toBottomOf="parent">-->
+    </android.support.v7.widget.CardView>
 
 
-    <!--</android.support.v7.widget.CardView>-->
-
-    <!--<AutoCompleteTextView-->
-    <!--android:id="@+id/location"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="35dp"-->
-    <!--android:textColor="@color/colorPrimaryDark"-->
-    <!--android:background="@color/colorPrimary"-->
-    <!--android:textSize="25sp"-->
-    <!--android:ems="8"-->
-    <!--app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent"-->
-    <!--app:layout_constraintVertical_bias="0.1" />-->
-
-
-    <!--<Button-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="35dp"-->
-    <!--android:textColor="@color/colorPrimaryDark"-->
-    <!--android:background="@color/colorPrimary"-->
-    <!--android:id="@+id/search"-->
-    <!--app:layout_constraintLeft_toRightOf="@+id/location"-->
-    <!--app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent"-->
-    <!--app:layout_constraintVertical_bias="0.1"/>-->
 
 
 </android.support.constraint.ConstraintLayout>
