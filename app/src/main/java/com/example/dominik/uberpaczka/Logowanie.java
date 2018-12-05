@@ -20,7 +20,7 @@ import static com.example.dominik.uberpaczka.Launch.networkCheck;
 public class Logowanie extends AppCompatActivity {
 
     private static final String TAG = "logowanie_email";
-    EditText email, password;
+    private EditText email, password;
     private FirebaseAuth mAuth;
     private UserInfo userInfo;
 
