@@ -95,7 +95,7 @@ public class Rejestracja extends AppCompatActivity {
 
                             SystemClock.sleep(1000);
 
-                            android.content.Intent myIntent = new android.content.Intent(v.getContext(), MainActivity.class);
+                            android.content.Intent myIntent = new android.content.Intent(v.getContext(), MapsActivity.class);
                             startActivity(myIntent);
                         } else {
                             //fail

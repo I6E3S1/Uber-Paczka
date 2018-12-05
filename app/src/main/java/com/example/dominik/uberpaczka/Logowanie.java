@@ -20,12 +20,9 @@ import static com.example.dominik.uberpaczka.Launch.networkCheck;
 public class Logowanie extends AppCompatActivity {
 
     private static final String TAG = "logowanie_email";
-
-    private FirebaseAuth mAuth;
-
-    private UserInfo userInfo;
-
     EditText email, password;
+    private FirebaseAuth mAuth;
+    private UserInfo userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +45,9 @@ public class Logowanie extends AppCompatActivity {
                 //Tak wyglada email w wyrażeniach reguralnych
                 if (networkCheck(context))
                     if (userInfo.check(emailS, email, "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", "Należy podać adres e-mail."))
-                        if (userInfo.check(passwordS, password, "\\w{6,}", "Za krótkie hasło.")) {
+                        if (userInfo.check(passwordS, password, "\\w{6,}", "Za krótkie hasło."))
                             signin(emailS, passwordS, v);
-                            android.content.Intent myIntent = new android.content.Intent(v.getContext(), MapsActivity.class);
-                            startActivity(myIntent);
-                        }
+
 
             }
         });
@@ -77,7 +72,7 @@ public class Logowanie extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.v(TAG, "Zalogowano");
 
-                            android.content.Intent myIntent = new android.content.Intent(v.getContext(), MainActivity.class);
+                            android.content.Intent myIntent = new android.content.Intent(v.getContext(), MapsActivity.class);
                             startActivity(myIntent);
 
                         } else {
