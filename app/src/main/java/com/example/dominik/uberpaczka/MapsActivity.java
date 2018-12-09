@@ -1,5 +1,6 @@
 package com.example.dominik.uberpaczka;
 
+import android.annotation.SuppressLint;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
@@ -34,9 +35,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
+
+import static java.lang.Thread.sleep;
 
 
 public class MapsActivity extends FragmentActivity implements
@@ -48,15 +57,20 @@ public class MapsActivity extends FragmentActivity implements
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     /**
-     * Flag indicating whether a requested permission has been denied after returning in
-     * {@link #onRequestPermissionsResult(int, String[], int[])}.
+     * TODO
+     * OBSŁUG KILKU MARKERÓW
+     * FRONT
      */
 
 
     private boolean mPermissionDenied = false;
-
     private GoogleMap mMap;
-    private String TAG = "AutoComplete";
+    private String TAG = "MAPS";
+    TextView textView;
+    private int inc = 0;
+    HashMap<Integer, String> hash = new HashMap<>();
+
+    GoogMatrixRequest googMatrixRequest;
 
     private PlaceAutocompleteFragment autocompleteFragment;
 
@@ -65,9 +79,11 @@ public class MapsActivity extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        textView = findViewById(R.id.departure);
+
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        Objects.requireNonNull(mapFragment).getMapAsync(this);
 
         autocompleteFragment = (PlaceAutocompleteFragment)
                 getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
@@ -75,21 +91,23 @@ public class MapsActivity extends FragmentActivity implements
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
-                // TODO: Get info about the selected place.
+                inc++;
 
                 String g = String.valueOf(place.getName());
 
-
                 Geocoder geocoder = new Geocoder(getBaseContext());
-                List<Address> addresses = null;
+                List<Address> addresses;
 
                 try {
                     addresses = geocoder.getFromLocationName(g, 3);
-                    if (addresses != null && !addresses.equals(""))
-                        search(addresses, mMap);
+                    if (addresses != null && !addresses.equals("")) {
+                        String res = search(addresses, mMap);
+                        hash.put(inc, res);
+                        textView.setText(res);
+                    }
 
                 } catch (Exception e) {
-
+                    Log.i(TAG, "geocoder error: "+g);
                 }
 
                 Log.i(TAG, "Place: " + place.getName());
@@ -97,18 +115,57 @@ public class MapsActivity extends FragmentActivity implements
 
             @Override
             public void onError(Status status) {
-                // TODO: Handle the error.
                 Log.i(TAG, "An error occurred: " + status);
+            }
+        });
+
+        final Button drvier = findViewById(R.id.driver);
+
+        drvier.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Thread thread = new Thread(new Runnable() {
+
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void run() {
+                        try {
+                            googMatrixRequest = new GoogMatrixRequest();
+                            textView = findViewById(R.id.arrival);
+                            googMatrixRequest.setStr_from(hash.get(1));
+                            googMatrixRequest.setStr_to(hash.get(2));
+                            Log.i("MAPSTEST", "1");
+                            Long distance = googMatrixRequest.transfer();
+                            sleep(3000);
+                            Log.i("MAPSTEST","Result" +distance);
+                            textView.setText(""+distance);
+
+                        } catch (Exception e) {
+                            Log.i("MAPSTEST", "Blad thread");
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                thread.start();
+//                android.content.Intent myIntent = new android.content.Intent(v.getContext(), MainActivity.class);
+//                startActivity(myIntent);
+
+
             }
         });
 
     }
 
-    protected void search(List<Address> addresses, GoogleMap map) {
+    protected String search(List<Address> addresses, GoogleMap map) {
+
+        map.clear();
 
         String addressText;
         Address address = addresses.get(0);
         LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+
+        String cords = latLng.toString();
 
         addressText = String.format(
                 "%s, %s",
@@ -118,6 +175,7 @@ public class MapsActivity extends FragmentActivity implements
 
         MarkerOptions markerOptions = new MarkerOptions();
 
+
         markerOptions.position(latLng);
         markerOptions.title(addressText);
 
@@ -125,6 +183,9 @@ public class MapsActivity extends FragmentActivity implements
         map.addMarker(markerOptions);
         map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+
+        return address.getFeatureName();
 
     }
 
@@ -137,7 +198,6 @@ public class MapsActivity extends FragmentActivity implements
         mMap.setOnMyLocationButtonClickListener(this);
         mMap.setOnMyLocationClickListener(this);
         enableMyLocation();
-       // map.moveCamera(CameraUpdateFactory.newLatLng());
     }
 
     private void enableMyLocation() {
@@ -192,9 +252,7 @@ public class MapsActivity extends FragmentActivity implements
         }
     }
 
-    /**
-     * Displays a dialog with error message explaining that the location permission is missing.
-     */
+
     private void showMissingPermissionError() {
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");

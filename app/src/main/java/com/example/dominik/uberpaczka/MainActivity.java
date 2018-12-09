@@ -18,49 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map_temp);
-
-
-        autocompleteFragment = (PlaceAutocompleteFragment)
-                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
-
-        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
-            @Override
-            public void onPlaceSelected(Place place) {
-                // TODO: Get info about the selected place.
-                Log.i(TAG, "Place: " + place.getName());
-            }
-
-            @Override
-            public void onError(Status status) {
-                // TODO: Handle the error.
-                Log.i(TAG, "An error occurred: " + status);
-            }
-        });
-
-//        button.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//
-//                String g = locationV.getText().toString();
-//
-//                Geocoder geocoder = new Geocoder(getBaseContext());
-//                List<Address> addresses = null;
-//
-//                try {
-//                    // Getting a maximum of 3 Address that matches the input
-//                    // text
-//                    addresses = geocoder.getFromLocationName(g, 3);
-//                    if (addresses != null && !addresses.equals(""))
-//                        search(addresses,mMap);
-//
-//                } catch (Exception e) {
-//
-//                }
-//
-//            }
-//        });
+        setContentView(R.layout.activity_main);
     }
 
 

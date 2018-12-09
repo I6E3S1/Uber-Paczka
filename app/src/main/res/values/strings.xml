@@ -16,5 +16,6 @@
     <string name="registernew">Zarejestruj</string>
     <string name="logo">Logo</string>
     <string name="title_activity_maps">Map</string>
+    <string name="driver">Driver panel</string>
 
 </resources>

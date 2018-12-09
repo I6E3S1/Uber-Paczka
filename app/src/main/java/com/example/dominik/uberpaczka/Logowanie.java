@@ -42,7 +42,7 @@ public class Logowanie extends AppCompatActivity {
                 String emailS = email.getText().toString();
                 String passwordS = password.getText().toString();
 
-                //Tak wyglada email w wyrażeniach reguralnych
+
                 if (networkCheck(context))
                     if (userInfo.check(emailS, email, "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", "Należy podać adres e-mail."))
                         if (userInfo.check(passwordS, password, "\\w{6,}", "Za krótkie hasło."))
