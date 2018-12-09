@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "764707941977",
+    "firebase_url": "https://uberpaczka.firebaseio.com",
+    "project_id": "uberpaczka",
+    "storage_bucket": "uberpaczka.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764707941977:android:dd5e35ba732a8b1b",
+        "android_client_info": {
+          "package_name": "com.example.dominik.uberpaczka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764707941977-c44nf1tl5s2i8vqhd7j50sd3r88qr5eh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dominik.uberpaczka",
+            "certificate_hash": "3f2f1f2d6d5617e80186fdfd31f1940a85613d27"
+          }
+        },
+        {
+          "client_id": "764707941977-ohsb12ia1ao295qtaj0e3tfo22hmo7g5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqsHACGNlbVzm2pw7822v0XnkaNRjSq-c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764707941977-ohsb12ia1ao295qtaj0e3tfo22hmo7g5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
