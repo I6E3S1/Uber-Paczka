@@ -1,22 +1,35 @@
 package com.example.dominik.uberpaczka;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
-public class  Launch extends AppCompatActivity {
+public class Launch extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT = 1000;
+
+    public static boolean networkCheck(Context context) {
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = Objects.requireNonNull(connectivityManager).getActiveNetworkInfo();
+        boolean result = activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        if (!result) {
+            Toast.makeText(context, "No internet connection.",
+                    Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +52,6 @@ public class  Launch extends AppCompatActivity {
 
                 }
             }, SPLASH_TIME_OUT);
-        }
-    }
-
-    public static boolean networkCheck(Context context) {
-
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = Objects.requireNonNull(connectivityManager).getActiveNetworkInfo();
-        boolean result = activeNetworkInfo != null && activeNetworkInfo.isConnected();
-        if (!result) {
-            Toast.makeText(context, "No internet connection.",
-                    Toast.LENGTH_LONG).show();
-            return false;
-        } else {
-            return true;
         }
     }
 }

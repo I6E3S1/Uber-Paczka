@@ -6,21 +6,20 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Objects;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class GoogMatrixRequest {
 
 
+    private static final String API_KEY = "AIzaSyAwkFEQM2q1Z44iqYV10BJa-btkmSONnBU";
     private String str_from;
     private String str_to;
+    private OkHttpClient client = new OkHttpClient();
 
     public void setStr_from(String str_from) {
         this.str_from = str_from;
@@ -29,10 +28,6 @@ public class GoogMatrixRequest {
     public void setStr_to(String str_to) {
         this.str_to = str_to;
     }
-
-    private static final String API_KEY = "AIzaSyAwkFEQM2q1Z44iqYV10BJa-btkmSONnBU";
-
-    private OkHttpClient client = new OkHttpClient();
 
     private String run(String url) {
         Request request = new Request.Builder()
@@ -69,7 +64,7 @@ public class GoogMatrixRequest {
         try {
             jObject = new JSONObject(response);
         } catch (JSONException e) {
-            Log.i("TRANSFER.F","Json create");
+            Log.i("TRANSFER.F", "Json create");
             e.printStackTrace();
         }
 
@@ -77,7 +72,7 @@ public class GoogMatrixRequest {
         try {
             jArray = Objects.requireNonNull(jObject).getJSONArray("rows");
         } catch (JSONException e) {
-            Log.i("TRANSFER.F","Json rows");
+            Log.i("TRANSFER.F", "Json rows");
             e.printStackTrace();
         }
 
@@ -89,7 +84,7 @@ public class GoogMatrixRequest {
                 try {
                     jObject1 = jArray.getJSONObject(0);
                 } catch (JSONException e) {
-                    Log.i("TRANSFER.F","Json empty");
+                    Log.i("TRANSFER.F", "Json empty");
                     e.printStackTrace();
                 }
 
@@ -106,24 +101,24 @@ public class GoogMatrixRequest {
                     try {
                         jObject2 = jArray1.getJSONObject(0);
                     } catch (JSONException e) {
-                        Log.i("TRANSFER.F","Json empty");
+                        Log.i("TRANSFER.F", "Json empty");
                         e.printStackTrace();
                     }
 
                     JSONObject jObject3 = null;
                     try {
                         jObject3 = Objects.requireNonNull(jObject2).getJSONObject("distance");
-                        Log.i("TRANSFER.F","Zawartosc"+jObject3.toString());
+                        Log.i("TRANSFER.F", "Zawartosc" + jObject3.toString());
                     } catch (JSONException e) {
-                        Log.i("TRANSFER.F","Json distance");
+                        Log.i("TRANSFER.F", "Json distance");
                         e.printStackTrace();
                     }
 
                     //JSONObject oneObject = jObject3.getJSONObject("value");
                     oneObjectsItem = Objects.requireNonNull(jObject3).getLong("value");
                     //String oneObjectsItem2 = oneObject.getString("duration");
-                    Log.i("JSON1",oneObjectsItem.toString() );
-                   // Log.i("JSON2", oneObjectsItem2);
+                    Log.i("JSON1", oneObjectsItem.toString());
+                    // Log.i("JSON2", oneObjectsItem2);
                 }
             } catch (JSONException e) {
                 Log.i("JSONY", "Blad\n" + response);

@@ -1,12 +1,22 @@
 package com.example.dominik.uberpaczka;
 
-import android.annotation.SuppressLint;
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentActivity;
+import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
@@ -14,42 +24,16 @@ import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
-import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-
-import static java.lang.Thread.sleep;
 
 
 public class MapsActivity extends FragmentActivity implements
@@ -59,7 +43,9 @@ public class MapsActivity extends FragmentActivity implements
         ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-
+    TextView textView;
+    HashMap<Integer, String> hash = new HashMap<>();
+    GoogMatrixRequest googMatrixRequest;
     /**
      * TODO
      * OBSŁUG KILKU MARKERÓW
@@ -70,12 +56,7 @@ public class MapsActivity extends FragmentActivity implements
     private boolean mPermissionDenied = false;
     private GoogleMap mMap;
     private String TAG = "MAPS";
-    TextView textView;
     private int inc = 0;
-    HashMap<Integer, String> hash = new HashMap<>();
-
-    GoogMatrixRequest googMatrixRequest;
-
     private PlaceAutocompleteFragment autocompleteFragment;
 
     @Override

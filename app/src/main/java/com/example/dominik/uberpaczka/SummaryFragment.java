@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 /**
  * Created by marek on 10.12.2018.
@@ -26,16 +25,16 @@ public class SummaryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view= inflater.inflate(R.layout.fragment_summary, container, false);
-        cancelButton=(Button)view.findViewById(R.id.cancel_button);
+        View view = inflater.inflate(R.layout.fragment_summary, container, false);
+        cancelButton = (Button) view.findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               closeFragment();
+                closeFragment();
             }
         });
 
-        acceptanceButton=view.findViewById(R.id.acceptance_button);
+        acceptanceButton = view.findViewById(R.id.acceptance_button);
         acceptanceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,18 +47,15 @@ public class SummaryFragment extends Fragment {
         return view;
 
 
-
-
-
     }
 
 
-    public void closeFragment(){
+    public void closeFragment() {
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.remove(this);
-        FloatingActionButton button=(FloatingActionButton) getActivity().findViewById(R.id.fab);
+        FloatingActionButton button = (FloatingActionButton) getActivity().findViewById(R.id.fab);
         fragmentTransaction.commit();
         button.show();
     }
