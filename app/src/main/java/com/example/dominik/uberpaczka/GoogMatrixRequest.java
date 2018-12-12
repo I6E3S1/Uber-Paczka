@@ -30,7 +30,7 @@ public class GoogMatrixRequest {
         this.str_to = str_to;
     }
 
-    private static final String API_KEY = "API_KEY";
+    private static final String API_KEY = "AIzaSyAwkFEQM2q1Z44iqYV10BJa-btkmSONnBU";
 
     private OkHttpClient client = new OkHttpClient();
 
