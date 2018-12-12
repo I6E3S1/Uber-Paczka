@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--used in fragment summary to make card view circular-->
+    <dimen name="package_size">96dp</dimen>
+    <!--radius package size needs to be half of package size-->
+    <dimen name="radius_package_size">48dp</dimen>
+    <!--left and right margin for fragment_summary_layout-->
+    <dimen name="margin_summary">8dp</dimen>
+
+    <dimen name="margin_top">8dp</dimen>
+</resources>

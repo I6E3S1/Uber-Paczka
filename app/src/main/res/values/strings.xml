@@ -15,5 +15,18 @@
     <string name="city">Miasto</string>
     <string name="registernew">Zarejestruj</string>
     <string name="logo">Logo</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="driver">Driver panel</string>
+
+    <!--every below strings were used in fragment summary for displaying string -->
+    <string name="summary">Podsumowanie</string>
+    <string name="destination">Destynacja</string>
+    <string name="from">Skad</string>
+    <string name="price">Cena</string>
+    <string name="package_size_small">Mala</string>
+    <string name="package_size_medium">Srednia</string>
+    <string name="package_size_grande">Duza</string>
+    <string name="choose_size">Wybierz rozmiar paczki</string>
+    <string name="accept">Potwierdzam</string>
 
 </resources>
