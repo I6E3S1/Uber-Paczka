@@ -44,6 +44,11 @@ public class MapsActivity extends FragmentActivity implements
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     TextView textView;
+
+    public HashMap<Integer, String> getHash() {
+        return hash;
+    }
+
     HashMap<Integer, String> hash = new HashMap<>();
     GoogMatrixRequest googMatrixRequest;
     /**
@@ -88,7 +93,8 @@ public class MapsActivity extends FragmentActivity implements
                     if (addresses != null && !addresses.equals("")) {
                         String res = search(addresses, mMap);
                         hash.put(inc, res);
-                        textView.setText(res);
+                        Log.i(TAG, "Hash map: " +hash.get(1));
+                        //textView.setText(res);
                     }
 
                 } catch (Exception e) {
@@ -152,7 +158,11 @@ public class MapsActivity extends FragmentActivity implements
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Bundle bundle=new Bundle();
+                bundle.putString("From", hash.get(1) );
+                bundle.putString("Destination", hash.get(2));
                 SummaryFragment fragment = new SummaryFragment();
+                fragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.summary_container, fragment);
                 fragmentTransaction.commit();
                 view.setVisibility(View.GONE);
@@ -168,8 +178,6 @@ public class MapsActivity extends FragmentActivity implements
         String addressText;
         Address address = addresses.get(0);
         LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-
-        String cords = latLng.toString();
 
         addressText = String.format(
                 "%s, %s",
@@ -219,8 +227,6 @@ public class MapsActivity extends FragmentActivity implements
     @Override
     public boolean onMyLocationButtonClick() {
         Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
-        // Return false so that we don't consume the event and the default behavior still occurs
-        // (the camera animates to the user's current position).
         return false;
     }
 
@@ -250,7 +256,6 @@ public class MapsActivity extends FragmentActivity implements
     protected void onResumeFragments() {
         super.onResumeFragments();
         if (mPermissionDenied) {
-            // Permission was not granted, display error dialog.
             showMissingPermissionError();
             mPermissionDenied = false;
         }
