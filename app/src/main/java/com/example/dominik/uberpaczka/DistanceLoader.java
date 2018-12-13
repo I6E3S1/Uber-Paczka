@@ -10,17 +10,19 @@ public class DistanceLoader extends AsyncTaskLoader<Long> {
 
     private GoogMatrixRequest googMatrixRequest;
 
-    public DistanceLoader(@NonNull Context context) {
+    public DistanceLoader(@NonNull Context context, String from, String destination) {
         super(context);
         googMatrixRequest=new GoogMatrixRequest();
+        googMatrixRequest.setStr_from(from);
+        googMatrixRequest.setStr_to(destination);
+
 
     }
 
     @Override
-    protected void onForceLoad() {
+    protected void onStartLoading() {
         forceLoad();
     }
-
 
     @Nullable
     @Override

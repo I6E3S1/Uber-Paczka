@@ -44,11 +44,6 @@ public class MapsActivity extends FragmentActivity implements
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     TextView textView;
-
-    public HashMap<Integer, String> getHash() {
-        return hash;
-    }
-
     HashMap<Integer, String> hash = new HashMap<>();
     GoogMatrixRequest googMatrixRequest;
     /**
@@ -63,6 +58,10 @@ public class MapsActivity extends FragmentActivity implements
     private String TAG = "MAPS";
     private int inc = 0;
     private PlaceAutocompleteFragment autocompleteFragment;
+
+    public HashMap<Integer, String> getHash() {
+        return hash;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,8 +158,8 @@ public class MapsActivity extends FragmentActivity implements
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 Bundle bundle=new Bundle();
-                bundle.putString("From", hash.get(1) );
-                bundle.putString("Destination", hash.get(2));
+                bundle.putString("from", hash.get(1));
+                bundle.putString("destination", hash.get(2));
                 SummaryFragment fragment = new SummaryFragment();
                 fragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.summary_container, fragment);

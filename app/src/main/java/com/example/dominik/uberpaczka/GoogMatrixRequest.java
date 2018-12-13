@@ -16,47 +16,26 @@ import java.util.Objects;
 public class GoogMatrixRequest {
 
 
-    private static final String API_KEY = "AIzaSyCAM6Emv4Lto7Vq5ApFfNASA3guAJ1L6Ec";
+    private static final String API_KEY = "AIzaSyCKouLOaDJOP4pwmLLOOltyX1lr-dT0wRU";
     private String str_from;
     private String str_to;
+    private final String URL_REQUEST = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + str_from
+            + "&destinations=" + str_to + "&mode=driving&language=fr-FR&avoid=tolls&key=" + API_KEY;
     private OkHttpClient client = new OkHttpClient();
-
-    public void setStr_from(String str_from) {
-        this.str_from = str_from;
-    }
-
-    public void setStr_to(String str_to) {
-        this.str_to = str_to;
-    }
-
-    private String run(String url) {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        Response response;
-        try {
-            response = client.newCall(request).execute();
-        } catch (IOException e) {
-            Log.i("RUN.F", "ResponseCall");
-            e.printStackTrace();
-            return "";
-        }
-        try {
-            return response.body().string();
-        } catch (IOException e) {
-            Log.i("RUN", "ResponseReturn");
-            e.printStackTrace();
-            return "";
-        }
-    }
 
     public Long transfer() {
         Log.i("TRANSFER.F", "begin");
-        String url_request = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + str_from + "&destinations=" + str_to + "&mode=driving&language=fr-FR&avoid=tolls&key=" + API_KEY;
         Log.i("TRANSFER.F", "req");
-        String response = run(url_request);
+        String response = run(URL_REQUEST);
         Log.i("TRANSFER.F", "res" + response);
+        Long longResult = extractJson(response);
+        return longResult;
+
+
+    }
+
+
+    public Long extractJson(String response) {
 
 
         JSONObject jObject = null;
@@ -75,7 +54,7 @@ public class GoogMatrixRequest {
             e.printStackTrace();
         }
 
-        Long oneObjectsItem = 0L;
+        Long distanceValue = 0L;
         for (int i = 0; i < Objects.requireNonNull(jArray).length(); i++) {
             try {
 
@@ -114,9 +93,9 @@ public class GoogMatrixRequest {
                     }
 
                     //JSONObject oneObject = jObject3.getJSONObject("value");
-                    oneObjectsItem = Objects.requireNonNull(jObject3).getLong("value");
+                    distanceValue = Objects.requireNonNull(jObject3).getLong("value");
                     //String oneObjectsItem2 = oneObject.getString("duration");
-                    Log.i("JSON1", oneObjectsItem.toString());
+                    Log.i("JSON1", distanceValue.toString());
                     // Log.i("JSON2", oneObjectsItem2);
                 }
             } catch (JSONException e) {
@@ -124,7 +103,39 @@ public class GoogMatrixRequest {
             }
         }
 
-        return oneObjectsItem;
+        return distanceValue;
 
+    }
+
+    private String run(String url) {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Response response = null;
+        try {
+            response = client.newCall(request).execute();
+            if (!response.isSuccessful()) throw new IOException();
+        } catch (IOException e) {
+            Log.i("RUN.F", "ResponseCall");
+            e.printStackTrace();
+            return "";
+        }
+        try {
+            return response.body().string();
+        } catch (IOException e) {
+            Log.i("RUN", "ResponseReturn");
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+
+    public void setStr_from(String str_from) {
+        this.str_from = str_from;
+    }
+
+    public void setStr_to(String str_to) {
+        this.str_to = str_to;
     }
 }
