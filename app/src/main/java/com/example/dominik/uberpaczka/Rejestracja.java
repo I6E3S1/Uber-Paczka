@@ -27,13 +27,9 @@ public class Rejestracja extends AppCompatActivity {
 
 
     private static final String TAG = "rejBlad";
+    EditText newemail, newpassword, name, surname, date, phone, karta, ccv, street, flat, city;
     private FirebaseAuth mAuth;
     private UserInfo userInfo;
-
-    EditText newemail, newpassword, name, surname, date, phone, karta, ccv, street, flat, city;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +63,7 @@ public class Rejestracja extends AppCompatActivity {
 
                 String emailS = newemail.getText().toString();
                 String passwordS = newpassword.getText().toString();
-                if(networkCheck(context))
+                if (networkCheck(context))
                 if (userInfo.check(emailS, newemail, "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}", "Należy podać adres e-mail."))
                     if (userInfo.check(passwordS, newpassword, "\\w{6,}", "Za krótkie hasło."))
                         if (infoCheck())

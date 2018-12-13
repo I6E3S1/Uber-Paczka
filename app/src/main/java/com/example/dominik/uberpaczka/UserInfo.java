@@ -1,17 +1,12 @@
 package com.example.dominik.uberpaczka;
 
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.widget.EditText;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static android.content.Context.CONNECTIVITY_SERVICE;
 
 public class UserInfo {
 

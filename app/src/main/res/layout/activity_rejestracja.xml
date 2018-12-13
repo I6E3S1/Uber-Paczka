@@ -13,6 +13,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:fillViewport="true"
+        android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -29,8 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:src="@drawable/logo_s"
                 android:contentDescription="@string/logo"
+                android:src="@drawable/logo_s"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -40,10 +41,10 @@
                 android:layout_height="wrap_content"
                 android:ems="8"
                 android:hint="@string/email"
+                android:inputType="textEmailAddress"
                 android:paddingTop="20dp"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="25sp"
-                android:inputType="textEmailAddress"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/logo" />
@@ -69,10 +70,10 @@
                 android:layout_height="wrap_content"
                 android:ems="8"
                 android:hint="@string/name"
+                android:inputType="textPersonName"
                 android:paddingTop="20dp"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="25sp"
-                android:inputType="textPersonName"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/newpassword" />
@@ -140,10 +141,10 @@
                 android:ems="8"
                 android:hint="@string/ccv"
                 android:inputType="number"
+                android:maxLength="3"
                 android:paddingTop="20dp"
                 android:textColorHint="@color/colorPrimaryDark"
                 android:textSize="25sp"
-                android:maxLength="3"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/karta" />

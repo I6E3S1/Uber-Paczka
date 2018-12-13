@@ -1,10 +1,22 @@
 package com.example.dominik.uberpaczka;
 
-import android.annotation.SuppressLint;
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
-import android.support.v4.app.FragmentActivity;
+import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
@@ -12,40 +24,16 @@ import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
-import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
-
-import static java.lang.Thread.sleep;
 
 
 public class MapsActivity extends FragmentActivity implements
@@ -55,7 +43,9 @@ public class MapsActivity extends FragmentActivity implements
         ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-
+    TextView textView;
+    HashMap<Integer, String> hash = new HashMap<>();
+    GoogMatrixRequest googMatrixRequest;
     /**
      * TODO
      * OBSŁUG KILKU MARKERÓW
@@ -66,12 +56,7 @@ public class MapsActivity extends FragmentActivity implements
     private boolean mPermissionDenied = false;
     private GoogleMap mMap;
     private String TAG = "MAPS";
-    TextView textView;
     private int inc = 0;
-    HashMap<Integer, String> hash = new HashMap<>();
-
-    GoogMatrixRequest googMatrixRequest;
-
     private PlaceAutocompleteFragment autocompleteFragment;
 
     @Override
@@ -79,7 +64,7 @@ public class MapsActivity extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        textView = findViewById(R.id.departure);
+//        textView = findViewById(R.id.departure);
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -107,7 +92,7 @@ public class MapsActivity extends FragmentActivity implements
                     }
 
                 } catch (Exception e) {
-                    Log.i(TAG, "geocoder error: "+g);
+                    Log.i(TAG, "geocoder error: " + g);
                 }
 
                 Log.i(TAG, "Place: " + place.getName());
@@ -119,39 +104,58 @@ public class MapsActivity extends FragmentActivity implements
             }
         });
 
-        final Button drvier = findViewById(R.id.driver);
+//        final Button drvier = findViewById(R.id.driver);
+//
+//        drvier.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//
+//                Thread thread = new Thread(new Runnable() {
+//
+//                    @SuppressLint("SetTextI18n")
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            googMatrixRequest = new GoogMatrixRequest();
+//                            textView = findViewById(R.id.arrival);
+//                            googMatrixRequest.setStr_from(hash.get(1));
+//                            googMatrixRequest.setStr_to(hash.get(2));
+//                            Log.i("MAPSTEST", "1");
+//                            Long distance = googMatrixRequest.transfer();
+//                            sleep(3000);
+//                            Log.i("MAPSTEST", "Result" + distance);
+//                            textView.setText("" + distance);
+//
+//                        } catch (Exception e) {
+//                            Log.i("MAPSTEST", "Blad thread");
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
+//
+//                thread.start();
+////                android.content.Intent myIntent = new android.content.Intent(v.getContext(), MainActivity.class);
+////                startActivity(myIntent);
+//
+//
+//            }
+//        });
 
-        drvier.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
 
-                Thread thread = new Thread(new Runnable() {
+        /**
+         * showing summary fragment on top of google maps screen
+         */
 
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void run() {
-                        try {
-                            googMatrixRequest = new GoogMatrixRequest();
-                            textView = findViewById(R.id.arrival);
-                            googMatrixRequest.setStr_from(hash.get(1));
-                            googMatrixRequest.setStr_to(hash.get(2));
-                            Log.i("MAPSTEST", "1");
-                            Long distance = googMatrixRequest.transfer();
-                            sleep(3000);
-                            Log.i("MAPSTEST","Result" +distance);
-                            textView.setText(""+distance);
+        final FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-                        } catch (Exception e) {
-                            Log.i("MAPSTEST", "Blad thread");
-                            e.printStackTrace();
-                        }
-                    }
-                });
-
-                thread.start();
-//                android.content.Intent myIntent = new android.content.Intent(v.getContext(), MainActivity.class);
-//                startActivity(myIntent);
-
-
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                SummaryFragment fragment = new SummaryFragment();
+                fragmentTransaction.add(R.id.summary_container, fragment);
+                fragmentTransaction.commit();
+                view.setVisibility(View.GONE);
             }
         });
 
