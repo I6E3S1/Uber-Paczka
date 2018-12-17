@@ -34,7 +34,7 @@ public class Logowanie extends AppCompatActivity {
 
         final Button subbutton = findViewById(R.id.submit);
 
-
+        //log in button
         subbutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 email = findViewById(R.id.email);
@@ -54,6 +54,7 @@ public class Logowanie extends AppCompatActivity {
 
         final Button regButton = findViewById(R.id.register);
 
+        //register button
         regButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 android.content.Intent myIntent = new android.content.Intent(v.getContext(), Rejestracja.class);
@@ -64,7 +65,7 @@ public class Logowanie extends AppCompatActivity {
 
     void signin(String emailS, String passwordS, final View v) {
 
-
+        //firebase check
         FirebaseAuth.getInstance().signInWithEmailAndPassword(emailS, passwordS)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

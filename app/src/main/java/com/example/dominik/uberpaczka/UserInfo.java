@@ -92,6 +92,7 @@ public class UserInfo {
     }
 
 
+    //check for specific regex and make sure edit text is not empty
     boolean check(String message, EditText editText, String error, String errorMessage) {
 
         Pattern pattern = Pattern.compile(error);

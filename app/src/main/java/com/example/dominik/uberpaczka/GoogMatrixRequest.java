@@ -16,13 +16,16 @@ import java.util.Objects;
 public class GoogMatrixRequest {
 
 
-    private static final String API_KEY = "AIzaSyCKouLOaDJOP4pwmLLOOltyX1lr-dT0wRU";
+    private static final String API_KEY = "AIzaSyAqsHACGNlbVzm2pw7822v0XnkaNRjSq-c";
     private String str_from;
     private String str_to;
     private final String URL_REQUEST = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + str_from
             + "&destinations=" + str_to + "&mode=driving&language=fr-FR&avoid=tolls&key=" + API_KEY;
+
+
     private OkHttpClient client = new OkHttpClient();
 
+    //main request
     public Long transfer() {
         Log.i("TRANSFER.F", "begin");
         Log.i("TRANSFER.F", "req");
@@ -34,7 +37,7 @@ public class GoogMatrixRequest {
 
     }
 
-
+    //Reading info from json files
     public Long extractJson(String response) {
 
 

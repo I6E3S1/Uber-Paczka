@@ -67,9 +67,7 @@ public class MapsActivity extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
-//        textView = findViewById(R.id.departure);
-
+        //google map support
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         Objects.requireNonNull(mapFragment).getMapAsync(this);
@@ -146,10 +144,11 @@ public class MapsActivity extends FragmentActivity implements
 //        });
 
 
-        /**
-         * showing summary fragment on top of google maps screen
-         */
 
+
+
+
+        //frontend
         final FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,6 +169,7 @@ public class MapsActivity extends FragmentActivity implements
 
     }
 
+    //using search tool in front end
     protected String search(List<Address> addresses, GoogleMap map) {
 
         map.clear();
@@ -200,6 +200,7 @@ public class MapsActivity extends FragmentActivity implements
 
     }
 
+    //start cord for map
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
@@ -211,6 +212,7 @@ public class MapsActivity extends FragmentActivity implements
         enableMyLocation();
     }
 
+    //sharing location
     private void enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {

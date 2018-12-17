@@ -23,6 +23,7 @@ import java.util.HashMap;
 
 /**
  * Created by marek on 10.12.2018.
+ * frontend
  */
 
 public class SummaryFragment extends Fragment implements LoaderManager.LoaderCallbacks<Long> {

@@ -58,6 +58,7 @@ public class Rejestracja extends AppCompatActivity {
 
 
 
+        //register button
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -73,6 +74,7 @@ public class Rejestracja extends AppCompatActivity {
         });
     }
 
+    //try to register user in firbase
     public void register(String emailS, String passwordS, final View v) {
 
 
@@ -104,7 +106,7 @@ public class Rejestracja extends AppCompatActivity {
 
     }
 
-
+    //send extended user info to data base with userID
     public void sendUserInfo() {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -125,6 +127,7 @@ public class Rejestracja extends AppCompatActivity {
                 });
     }
 
+    //check regex in edit texts
     public boolean infoCheck() {
 
         if (userInfo.check(name.getText().toString(), name, "[a-zA-Z0-9\\._\\-]{3,}", "Nieprawidłowe imie.")) {

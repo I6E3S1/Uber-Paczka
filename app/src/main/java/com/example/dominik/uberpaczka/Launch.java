@@ -17,6 +17,7 @@ public class Launch extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT = 1000;
 
+    //check if network is available
     public static boolean networkCheck(Context context) {
 
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
@@ -31,6 +32,7 @@ public class Launch extends AppCompatActivity {
         }
     }
 
+    //show logo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
