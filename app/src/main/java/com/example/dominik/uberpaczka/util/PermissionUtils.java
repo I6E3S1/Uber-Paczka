@@ -1,4 +1,4 @@
-package com.example.dominik.uberpaczka;
+package com.example.dominik.uberpaczka.util;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.widget.Toast;
+
+import com.example.dominik.uberpaczka.map.MapsActivity;
 
 /**
  * Utility class for access to runtime permissions.

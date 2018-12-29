@@ -1,4 +1,4 @@
-package com.example.dominik.uberpaczka;
+package com.example.dominik.uberpaczka.util;
 
 import android.util.Log;
 
@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class GoogMatrixRequest {
-
 
     private static final String API_KEY = "AIzaSyAqsHACGNlbVzm2pw7822v0XnkaNRjSq-c";
     private String str_from;

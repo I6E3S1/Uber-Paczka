@@ -1,4 +1,4 @@
-package com.example.dominik.uberpaczka;
+package com.example.dominik.uberpaczka.util;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,12 +7,11 @@ import android.support.v4.content.AsyncTaskLoader;
 
 public class DistanceLoader extends AsyncTaskLoader<Long> {
 
-
     private GoogMatrixRequest googMatrixRequest;
 
     public DistanceLoader(@NonNull Context context, String from, String destination) {
         super(context);
-        googMatrixRequest=new GoogMatrixRequest();
+        googMatrixRequest = new GoogMatrixRequest();
         googMatrixRequest.setStr_from(from);
         googMatrixRequest.setStr_to(destination);
 
@@ -27,7 +26,7 @@ public class DistanceLoader extends AsyncTaskLoader<Long> {
     @Nullable
     @Override
     public Long loadInBackground() {
-        Long returnValue=googMatrixRequest.transfer();
+        Long returnValue = googMatrixRequest.transfer();
         return returnValue;
     }
 }

@@ -17,7 +17,7 @@ import com.example.dominik.uberpaczka.R;
  * Created by marek on 29.12.2018.
  */
 
-public class NoInternetConnectrionDialogFragment extends DialogFragment {
+public class NoInternetConnectionDialogFragment extends DialogFragment {
 
 
     private Button understandButton;

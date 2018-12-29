@@ -14,11 +14,11 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import com.example.dominik.uberpaczka.Checker;
-import com.example.dominik.uberpaczka.MapsActivity;
+import com.example.dominik.uberpaczka.util.ConnectivityChecker;
+import com.example.dominik.uberpaczka.map.MapsActivity;
 import com.example.dominik.uberpaczka.R;
 import com.example.dominik.uberpaczka.registration.registration_usable.UserInfo;
-import com.example.dominik.uberpaczka.validators_patterns.Validate;
+import com.example.dominik.uberpaczka.util.HasValidation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -34,7 +34,7 @@ import static android.content.ContentValues.TAG;
  * Created by marek on 28.12.2018.
  */
 
-public class ConfirmationFragment extends Fragment implements Validate{
+public class ConfirmationFragment extends Fragment implements HasValidation {
 
     private UserInfo userInfo;
     private Button registerButton;
@@ -59,7 +59,7 @@ public class ConfirmationFragment extends Fragment implements Validate{
             @Override
             public void onClick(View v) {
                 if(validate()){
-                    if(Checker.checkInternetConnection(getContext(), getFragmentManager())) {
+                    if(ConnectivityChecker.checkInternetConnection(getContext(), getFragmentManager())) {
                         registerUser();
                         changeVisibiltyDuringRegistration();
                     }
@@ -121,6 +121,11 @@ public class ConfirmationFragment extends Fragment implements Validate{
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
+    }
+
+    @Override
+    public void initValidationPatterns() {
+
     }
 
     @Override

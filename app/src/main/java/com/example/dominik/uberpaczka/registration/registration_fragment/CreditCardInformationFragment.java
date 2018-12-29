@@ -17,13 +17,12 @@ import com.example.dominik.uberpaczka.registration.RegistrationActivity;
 import com.example.dominik.uberpaczka.registration.registration_usable.RegistrationFragmentInterface;
 import com.example.dominik.uberpaczka.validators_patterns.CCVValidator;
 import com.example.dominik.uberpaczka.validators_patterns.CreditCardNumberValidator;
-import com.example.dominik.uberpaczka.validators_patterns.Validate;
 
 /**
  * Created by marek on 27.12.2018.
  */
 
-public class CreditCardInformationFragment extends Fragment implements Validate, RegistrationFragmentInterface {
+public class CreditCardInformationFragment extends Fragment implements RegistrationFragmentInterface {
 
 
     private int NEXTPAGE=3;
@@ -50,8 +49,8 @@ public class CreditCardInformationFragment extends Fragment implements Validate,
         ccvLayout=view.findViewById(R.id.ccv_textinput_layout);
 
 
-        createValidationPatterns();
-        setUpButtonListeners();
+        initValidationPatterns();
+        initButtonListeners();
 
         return view;
     }
@@ -59,7 +58,7 @@ public class CreditCardInformationFragment extends Fragment implements Validate,
 
 
     @Override
-    public void setUpButtonListeners(){
+    public void initButtonListeners(){
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +75,7 @@ public class CreditCardInformationFragment extends Fragment implements Validate,
     }
 
     @Override
-    public void createValidationPatterns(){
+    public void initValidationPatterns(){
         creditCardNumberValidator=new CreditCardNumberValidator(creditCardLayout, getString(R.string.error_card_number), getString(R.string.error_blank));
         ccvValidator=new CCVValidator(ccvLayout, getString(R.string.error_ccv), getString(R.string.error_blank));
     }

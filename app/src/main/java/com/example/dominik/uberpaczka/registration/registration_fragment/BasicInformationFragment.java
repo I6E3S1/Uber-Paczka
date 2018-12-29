@@ -21,7 +21,6 @@ import com.example.dominik.uberpaczka.registration.registration_usable.Registrat
 import com.example.dominik.uberpaczka.validators_patterns.NameValidator;
 import com.example.dominik.uberpaczka.validators_patterns.PhoneValidator;
 import com.example.dominik.uberpaczka.validators_patterns.SurnameValidator;
-import com.example.dominik.uberpaczka.validators_patterns.Validate;
 
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
@@ -30,7 +29,7 @@ import java.util.GregorianCalendar;
  * Created by marek on 27.12.2018.
  */
 
-    public class BasicInformationFragment extends Fragment implements Validate, DatePickerDialog.OnDateSetListener, RegistrationFragmentInterface {
+    public class BasicInformationFragment extends Fragment implements DatePickerDialog.OnDateSetListener, RegistrationFragmentInterface {
 
     private final int NEXT_PAGE=1;
     private Button nextButton;
@@ -70,30 +69,23 @@ import java.util.GregorianCalendar;
         dateDialog=new DatePickerFragment();
         dateDialog.onDateSet(this);
 
-        createValidationPatterns();
-        setUpButtonListeners();
+        initValidationPatterns();
+        initButtonListeners();
 
         return view;
     }
-
-
-
-
 
     /**
      * seting up listners for button used in fragments
      */
     @Override
-    public void setUpButtonListeners(){
-
+    public void initButtonListeners(){
         birthdayView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dateDialog.show(getFragmentManager(), "DatePicker");
             }
         });
-
-
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +108,7 @@ import java.util.GregorianCalendar;
      * creating reegex pattern used for validating information from this fragment
      */
     @Override
-    public void createValidationPatterns(){
+    public void initValidationPatterns(){
         nameValidator=new NameValidator(nameInputLayout, getString(R.string.error_name), getString(R.string.error_blank));
         surnameValidator=new SurnameValidator(surnameInputLayout, getString(R.string.error_surname), getString(R.string.error_blank));
         phoneValidator=new PhoneValidator(phoneInputLayout, getString(R.string.error_phone_number), getString(R.string.error_blank));

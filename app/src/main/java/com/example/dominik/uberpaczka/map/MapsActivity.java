@@ -1,4 +1,4 @@
-package com.example.dominik.uberpaczka;
+package com.example.dominik.uberpaczka.map;
 
 import android.Manifest;
 import android.content.Intent;
@@ -22,6 +22,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dominik.uberpaczka.util.GoogMatrixRequest;
+import com.example.dominik.uberpaczka.R;
+import com.example.dominik.uberpaczka.summary.SummaryFragment;
+import com.example.dominik.uberpaczka.login.LoginActivity;
+import com.example.dominik.uberpaczka.util.PermissionUtils;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
@@ -98,7 +103,7 @@ public class MapsActivity extends FragmentActivity implements
                     if (addresses != null && !addresses.equals("")) {
                         String res = search(addresses, mMap);
                         hash.put(inc, res);
-                        Log.i(TAG, "Hash map: " +hash.get(1));
+                        Log.i(TAG, "Hash map: " + hash.get(1));
                         //textView.setText(res);
                     }
 
@@ -116,7 +121,6 @@ public class MapsActivity extends FragmentActivity implements
         });
 
 
-
         //frontend
         final FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +129,7 @@ public class MapsActivity extends FragmentActivity implements
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("from", hash.get(1));
                 bundle.putString("destination", hash.get(2));
                 SummaryFragment fragment = new SummaryFragment();
@@ -135,7 +139,6 @@ public class MapsActivity extends FragmentActivity implements
                 view.setVisibility(View.GONE);
             }
         });
-
 
 
         setUpNavigationDrawer();
@@ -245,9 +248,9 @@ public class MapsActivity extends FragmentActivity implements
     /**
      * setting a listner for naigation item click
      */
-    public void setUpNavigationDrawer(){
+    public void setUpNavigationDrawer() {
 
-        this.navigationView =findViewById(R.id.navigation_view);
+        this.navigationView = findViewById(R.id.navigation_view);
         this.drawerLayout = findViewById(R.id.drawer_layout);
         this.navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -271,9 +274,10 @@ public class MapsActivity extends FragmentActivity implements
     /**
      * method changing application flow depending on navigation item clicked
      * used in on navigationItemSelectedListner
+     *
      * @param id
      */
-    public void onItemSelectectedNavigation(int id){
+    public void onItemSelectectedNavigation(int id) {
 
         switch (id) {
             case R.id.log_out:

@@ -16,13 +16,12 @@ import com.example.dominik.uberpaczka.registration.RegistrationActivity;
 import com.example.dominik.uberpaczka.registration.registration_usable.RegistrationFragmentInterface;
 import com.example.dominik.uberpaczka.validators_patterns.EmailValidator;
 import com.example.dominik.uberpaczka.validators_patterns.PasswordValidator;
-import com.example.dominik.uberpaczka.validators_patterns.Validate;
 
 /**
  * Created by marek on 28.12.2018.
  */
 
-public class UsernamePasswordFragment extends Fragment implements Validate, RegistrationFragmentInterface {
+public class UsernamePasswordFragment extends Fragment implements RegistrationFragmentInterface {
 
 
 
@@ -51,15 +50,15 @@ public class UsernamePasswordFragment extends Fragment implements Validate, Regi
         emailLayout =view.findViewById(R.id.email_textinput_layout);
         repeatPasswordLayout =view.findViewById(R.id.repeatpassword_textinput_layout);
 
-        createValidationPatterns();
-        setUpButtonListeners();
+        initValidationPatterns();
+        initButtonListeners();
 
         return view;
     }
 
 
     @Override
-    public void setUpButtonListeners(){
+    public void initButtonListeners(){
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +76,7 @@ public class UsernamePasswordFragment extends Fragment implements Validate, Regi
     }
 
     @Override
-    public void createValidationPatterns(){
+    public void initValidationPatterns(){
         passwordValidator =new PasswordValidator(passwordLayout, getString(R.string.error_password), getString(R.string.error_blank));
         emailValidator =new EmailValidator(repeatPasswordLayout, getString(R.string.error_password), getString(R.string.error_blank));
     }

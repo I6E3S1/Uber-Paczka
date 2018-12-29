@@ -1,4 +1,4 @@
-package com.example.dominik.uberpaczka;
+package com.example.dominik.uberpaczka.launch;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.dominik.uberpaczka.R;
+import com.example.dominik.uberpaczka.login.LoginActivity;
+import com.example.dominik.uberpaczka.map.MapsActivity;
+import com.example.dominik.uberpaczka.util.ConnectivityChecker;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LaunchActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 1000;
-
+    private static final int SPLASH_TIME_OUT = 1000;
 
     //show logo
     @Override
@@ -19,7 +22,7 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
         Context context = getApplicationContext();
-        if (Checker.checkInternetConnection(context, getSupportFragmentManager())) {
+        if (ConnectivityChecker.checkInternetConnection(context, getSupportFragmentManager())) {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

@@ -18,13 +18,12 @@ import com.example.dominik.uberpaczka.registration.registration_usable.Registrat
 import com.example.dominik.uberpaczka.validators_patterns.CityValidator;
 import com.example.dominik.uberpaczka.validators_patterns.FlatValidator;
 import com.example.dominik.uberpaczka.validators_patterns.StreetValidator;
-import com.example.dominik.uberpaczka.validators_patterns.Validate;
 
 /**
  * Created by marek on 27.12.2018.
  */
 
-public class PostalAdressFragment extends Fragment implements Validate, RegistrationFragmentInterface {
+public class PostalAdressFragment extends Fragment implements RegistrationFragmentInterface {
 
 
     private final int NEXT_PAGE=2;
@@ -58,8 +57,8 @@ public class PostalAdressFragment extends Fragment implements Validate, Registra
         nextButton=view.findViewById(R.id.button_next_detail1);
 
 
-        createValidationPatterns();
-        setUpButtonListeners();
+        initValidationPatterns();
+        initButtonListeners();
 
 
 
@@ -68,7 +67,7 @@ public class PostalAdressFragment extends Fragment implements Validate, Registra
 
 
     @Override
-    public void setUpButtonListeners(){
+    public void initButtonListeners(){
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,7 +86,7 @@ public class PostalAdressFragment extends Fragment implements Validate, Registra
     }
 
     @Override
-    public void createValidationPatterns(){
+    public void initValidationPatterns(){
         flatValidator=new FlatValidator(flatInputLayout, getString(R.string.error_flat), getString(R.string.error_blank));
         streetValidator=new StreetValidator(streetInputLayout, getString(R.string.error_street), getString(R.string.error_blank));
         cityValidator=new CityValidator(cityInputLayout, getString(R.string.error_city), getString(R.string.error_blank));

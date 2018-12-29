@@ -1,4 +1,4 @@
-package com.example.dominik.uberpaczka;
+package com.example.dominik.uberpaczka.summary;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,6 +18,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.dominik.uberpaczka.R;
+import com.example.dominik.uberpaczka.util.DistanceLoader;
+
 import java.util.HashMap;
 
 
@@ -27,7 +30,6 @@ import java.util.HashMap;
  */
 
 public class SummaryFragment extends Fragment implements LoaderManager.LoaderCallbacks<Long> {
-
 
     private Button cancelButton;
     private Button acceptanceButton;

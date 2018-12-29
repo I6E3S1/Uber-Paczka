@@ -1,4 +1,4 @@
-package com.example.dominik.uberpaczka;
+package com.example.dominik.uberpaczka.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
 
-import com.example.dominik.uberpaczka.registration.registration_fragment.NoInternetConnectrionDialogFragment;
+import com.example.dominik.uberpaczka.registration.registration_fragment.NoInternetConnectionDialogFragment;
 
 import java.util.Objects;
 
@@ -16,9 +16,9 @@ import static android.content.Context.CONNECTIVITY_SERVICE;
  * Created by marek on 29.12.2018.
  */
 
-public class Checker {
+public class ConnectivityChecker {
 
-    public static boolean checkInternetConnection(Context context, FragmentManager fragmentManager){
+    public static boolean checkInternetConnection(Context context, FragmentManager fragmentManager) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = Objects.requireNonNull(connectivityManager).getActiveNetworkInfo();
         boolean result = activeNetworkInfo != null && activeNetworkInfo.isConnected();
@@ -35,7 +35,7 @@ public class Checker {
     }
 
     public static void openNoConnectionFragment(FragmentManager fragmentManager) {
-        NoInternetConnectrionDialogFragment dialogFragment = new NoInternetConnectrionDialogFragment();
+        NoInternetConnectionDialogFragment dialogFragment = new NoInternetConnectionDialogFragment();
         dialogFragment.show(fragmentManager, "No internet connection");
     }
 }
