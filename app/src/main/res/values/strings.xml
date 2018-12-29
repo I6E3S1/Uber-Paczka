@@ -1,5 +1,8 @@
 <resources>
+    <!-- commons -->
+    <string name="common_approve">Zatwierdź</string>
     <string name="app_name">UberPaczka</string>
+
     <string name="email">E-mail</string>
     <string name="password">Hasło</string>
     <string name="repeat_password">Powtórz hasło</string>
@@ -70,4 +73,7 @@
     <string name="log_out">Wyloguj</string>
     <string name="my_account">Moje konto</string>
     <string name="settings">Ustawienia</string>
+
+    <!--driver panel -->
+    <string name="register_driver_header">Rejestracja kierowcy</string>
 </resources>

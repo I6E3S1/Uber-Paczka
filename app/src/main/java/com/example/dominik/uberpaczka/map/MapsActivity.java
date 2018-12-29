@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dominik.uberpaczka.driver.registration.DriverRegistrationActivity;
 import com.example.dominik.uberpaczka.util.GoogMatrixRequest;
 import com.example.dominik.uberpaczka.R;
 import com.example.dominik.uberpaczka.summary.SummaryFragment;
@@ -246,7 +247,7 @@ public class MapsActivity extends FragmentActivity implements
 
 
     /**
-     * setting a listner for naigation item click
+     * setting a listener for navigation item click
      */
     public void setUpNavigationDrawer() {
 
@@ -280,13 +281,17 @@ public class MapsActivity extends FragmentActivity implements
     public void onItemSelectectedNavigation(int id) {
 
         switch (id) {
-            case R.id.log_out:
+            case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
                 Intent homeIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(homeIntent);
                 finish();
                 break;
-
+            case R.id.nav_driver:
+                Intent driverRegistrationIntent = new Intent(getApplicationContext(), DriverRegistrationActivity.class);
+                startActivity(driverRegistrationIntent);
+                finish();
+                break;
         }
 
     }
