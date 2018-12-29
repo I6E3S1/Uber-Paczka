@@ -5,17 +5,18 @@
             android:id="@+id/nav_camera"
             android:icon="@drawable/logo_s"
             android:title="@string/surname" />
-        <!--<item-->
-        <!--android:id="@+id/nav_gallery"-->
-        <!--android:icon="@drawable/ic_menu_gallery"-->
-        <!--android:title="@string/gallery" />-->
-        <!--<item-->
-        <!--android:id="@+id/nav_slideshow"-->
-        <!--android:icon="@drawable/ic_menu_slideshow"-->
-        <!--android:title="@string/slideshow" />-->
-        <!--<item-->
-        <!--android:id="@+id/nav_manage"-->
-        <!--android:icon="@drawable/ic_menu_manage"-->
-        <!--android:title="@string/tools" />-->
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_account_icon"
+            android:title="@string/my_account" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_settings_icon"
+            android:title="@string/settings" />
+        <item
+            android:id="@+id/log_out"
+            android:icon="@drawable/ic_logout_icon"
+            android:title="@string/log_out" />
+
     </group>
 </menu>

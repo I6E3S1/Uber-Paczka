@@ -1,6 +1,7 @@
 package com.example.dominik.uberpaczka;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -8,12 +9,15 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +34,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.HashMap;
 import java.util.List;
@@ -43,29 +48,34 @@ public class MapsActivity extends FragmentActivity implements
         ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    TextView textView;
-    HashMap<Integer, String> hash = new HashMap<>();
-    GoogMatrixRequest googMatrixRequest;
+    private TextView textView;
+    private HashMap<Integer, String> hash = new HashMap<>();
+    private GoogMatrixRequest googMatrixRequest;
     /**
      * TODO
      * OBSŁUG KILKU MARKERÓW
      * FRONT
      */
 
-
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
     private boolean mPermissionDenied = false;
     private GoogleMap mMap;
     private String TAG = "MAPS";
     private int inc = 0;
     private PlaceAutocompleteFragment autocompleteFragment;
 
+    public HashMap<Integer, String> getHash() {
+        return hash;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-//        textView = findViewById(R.id.departure);
 
+        //google map support
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         Objects.requireNonNull(mapFragment).getMapAsync(this);
@@ -88,7 +98,8 @@ public class MapsActivity extends FragmentActivity implements
                     if (addresses != null && !addresses.equals("")) {
                         String res = search(addresses, mMap);
                         hash.put(inc, res);
-                        textView.setText(res);
+                        Log.i(TAG, "Hash map: " +hash.get(1));
+                        //textView.setText(res);
                     }
 
                 } catch (Exception e) {
@@ -104,47 +115,9 @@ public class MapsActivity extends FragmentActivity implements
             }
         });
 
-//        final Button drvier = findViewById(R.id.driver);
-//
-//        drvier.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//                Thread thread = new Thread(new Runnable() {
-//
-//                    @SuppressLint("SetTextI18n")
-//                    @Override
-//                    public void run() {
-//                        try {
-//                            googMatrixRequest = new GoogMatrixRequest();
-//                            textView = findViewById(R.id.arrival);
-//                            googMatrixRequest.setStr_from(hash.get(1));
-//                            googMatrixRequest.setStr_to(hash.get(2));
-//                            Log.i("MAPSTEST", "1");
-//                            Long distance = googMatrixRequest.transfer();
-//                            sleep(3000);
-//                            Log.i("MAPSTEST", "Result" + distance);
-//                            textView.setText("" + distance);
-//
-//                        } catch (Exception e) {
-//                            Log.i("MAPSTEST", "Blad thread");
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                });
-//
-//                thread.start();
-////                android.content.Intent myIntent = new android.content.Intent(v.getContext(), MainActivity.class);
-////                startActivity(myIntent);
-//
-//
-//            }
-//        });
 
 
-        /**
-         * showing summary fragment on top of google maps screen
-         */
-
+        //frontend
         final FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,15 +125,24 @@ public class MapsActivity extends FragmentActivity implements
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Bundle bundle=new Bundle();
+                bundle.putString("from", hash.get(1));
+                bundle.putString("destination", hash.get(2));
                 SummaryFragment fragment = new SummaryFragment();
+                fragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.summary_container, fragment);
                 fragmentTransaction.commit();
                 view.setVisibility(View.GONE);
             }
         });
 
+
+
+        setUpNavigationDrawer();
+
     }
 
+    //using search tool in front end
     protected String search(List<Address> addresses, GoogleMap map) {
 
         map.clear();
@@ -168,8 +150,6 @@ public class MapsActivity extends FragmentActivity implements
         String addressText;
         Address address = addresses.get(0);
         LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-
-        String cords = latLng.toString();
 
         addressText = String.format(
                 "%s, %s",
@@ -193,6 +173,7 @@ public class MapsActivity extends FragmentActivity implements
 
     }
 
+    //start cord for map
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
@@ -204,6 +185,7 @@ public class MapsActivity extends FragmentActivity implements
         enableMyLocation();
     }
 
+    //sharing location
     private void enableMyLocation() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -219,8 +201,6 @@ public class MapsActivity extends FragmentActivity implements
     @Override
     public boolean onMyLocationButtonClick() {
         Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
-        // Return false so that we don't consume the event and the default behavior still occurs
-        // (the camera animates to the user's current position).
         return false;
     }
 
@@ -250,7 +230,6 @@ public class MapsActivity extends FragmentActivity implements
     protected void onResumeFragments() {
         super.onResumeFragments();
         if (mPermissionDenied) {
-            // Permission was not granted, display error dialog.
             showMissingPermissionError();
             mPermissionDenied = false;
         }
@@ -260,6 +239,52 @@ public class MapsActivity extends FragmentActivity implements
     private void showMissingPermissionError() {
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
+    }
+
+
+    /**
+     * setting a listner for naigation item click
+     */
+    public void setUpNavigationDrawer(){
+
+        this.navigationView =findViewById(R.id.navigation_view);
+        this.drawerLayout = findViewById(R.id.drawer_layout);
+        this.navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+                        drawerLayout.closeDrawers();
+
+                        onItemSelectectedNavigation(menuItem.getItemId());
+
+
+                        return true;
+                    }
+                });
+
+    }
+
+
+    /**
+     * method changing application flow depending on navigation item clicked
+     * used in on navigationItemSelectedListner
+     * @param id
+     */
+    public void onItemSelectectedNavigation(int id){
+
+        switch (id) {
+            case R.id.log_out:
+                FirebaseAuth.getInstance().signOut();
+                Intent homeIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(homeIntent);
+                finish();
+                break;
+
+        }
+
     }
 
 }

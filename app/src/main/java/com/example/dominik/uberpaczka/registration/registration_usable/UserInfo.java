@@ -1,22 +1,25 @@
-package com.example.dominik.uberpaczka;
+package com.example.dominik.uberpaczka.registration.registration_usable;
 
 
 import android.widget.EditText;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserInfo {
+public class UserInfo implements Serializable {
 
 
+    private String password;
+    private String email;
     private String userID;
     private String name;
     private String surname;
     private String date;
     private String phone;
-    private String karta;
+    private String creditCardNumber;
     private String ccv;
     private String street;
     private String flat;
@@ -38,8 +41,8 @@ public class UserInfo {
         this.phone = phone;
     }
 
-    public void setKarta(String karta) {
-        this.karta = karta;
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
     }
 
     public void setCcv(String ccv) {
@@ -57,6 +60,23 @@ public class UserInfo {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 
 
     public void setUserID(String userID) {
@@ -78,7 +98,7 @@ public class UserInfo {
 
         userInfoMap.put("phone", phone);
 
-        userInfoMap.put("karta", karta);
+        userInfoMap.put("creditCardNumber", creditCardNumber);
 
         userInfoMap.put("ccv", ccv);
 
@@ -92,6 +112,7 @@ public class UserInfo {
     }
 
 
+    //check for specific regex and make sure edit text is not empty
     boolean check(String message, EditText editText, String error, String errorMessage) {
 
         Pattern pattern = Pattern.compile(error);
