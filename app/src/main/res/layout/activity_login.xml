@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:padding="@dimen/padding_registration_fragment"
-    tools:context=".LoginActivity">
     tools:context=".login.LoginActivity">
 
     <TextView
