@@ -9,4 +9,16 @@
     <dimen name="margin_summary">8dp</dimen>
 
     <dimen name="margin_top">8dp</dimen>
+
+
+    <!--registration fragment-->
+    <dimen name="padding_registration_fragment">24dp</dimen>
+    <dimen name="top_margin">16dp</dimen>
+    <dimen name="padding_botton">32dp</dimen>
+    <dimen name="padding_textinput_layout">2dp</dimen>
+
+    <dimen name="text_input_layout_radius">5dp</dimen>
+
+    <!--in confirmation fragment-->
+    <dimen name="paddig_left_registration_checkbox">16dp</dimen>
 </resources>

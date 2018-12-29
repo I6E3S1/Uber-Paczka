@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/padding_registration_fragment"
+    android:background="@color/white"
+    >
+
+    <ImageView
+        android:id="@+id/no_internet_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_wifi_off_icon"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/check_connection_textview"
+        app:layout_constraintTop_toBottomOf="@id/no_internet_icon"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="@string/check_internet_connection"
+        android:textAlignment="center"
+        android:textColor="@color/textColor"/>
+
+    <View
+        android:id="@+id/devider_internet_connectrion"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_top"
+        app:layout_constraintTop_toBottomOf="@id/check_connection_textview"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/light_grey"/>
+
+    <Button
+        android:id="@+id/check_connection_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/devider_internet_connectrion"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="@string/understand_no_internet_connection"
+        android:textAlignment="center"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/textColor"/>
+
+
+
+</android.support.constraint.ConstraintLayout>

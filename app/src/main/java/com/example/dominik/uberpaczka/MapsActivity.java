@@ -1,6 +1,7 @@
 package com.example.dominik.uberpaczka;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -8,12 +9,15 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +34,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.HashMap;
 import java.util.List;
@@ -43,16 +48,17 @@ public class MapsActivity extends FragmentActivity implements
         ActivityCompat.OnRequestPermissionsResultCallback {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    TextView textView;
-    HashMap<Integer, String> hash = new HashMap<>();
-    GoogMatrixRequest googMatrixRequest;
+    private TextView textView;
+    private HashMap<Integer, String> hash = new HashMap<>();
+    private GoogMatrixRequest googMatrixRequest;
     /**
      * TODO
      * OBSŁUG KILKU MARKERÓW
      * FRONT
      */
 
-
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
     private boolean mPermissionDenied = false;
     private GoogleMap mMap;
     private String TAG = "MAPS";
@@ -67,6 +73,8 @@ public class MapsActivity extends FragmentActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+
         //google map support
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -107,45 +115,6 @@ public class MapsActivity extends FragmentActivity implements
             }
         });
 
-//        final Button drvier = findViewById(R.id.driver);
-//
-//        drvier.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//                Thread thread = new Thread(new Runnable() {
-//
-//                    @SuppressLint("SetTextI18n")
-//                    @Override
-//                    public void run() {
-//                        try {
-//                            googMatrixRequest = new GoogMatrixRequest();
-//                            textView = findViewById(R.id.arrival);
-//                            googMatrixRequest.setStr_from(hash.get(1));
-//                            googMatrixRequest.setStr_to(hash.get(2));
-//                            Log.i("MAPSTEST", "1");
-//                            Long distance = googMatrixRequest.transfer();
-//                            sleep(3000);
-//                            Log.i("MAPSTEST", "Result" + distance);
-//                            textView.setText("" + distance);
-//
-//                        } catch (Exception e) {
-//                            Log.i("MAPSTEST", "Blad thread");
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                });
-//
-//                thread.start();
-////                android.content.Intent myIntent = new android.content.Intent(v.getContext(), MainActivity.class);
-////                startActivity(myIntent);
-//
-//
-//            }
-//        });
-
-
-
-
 
 
         //frontend
@@ -166,6 +135,10 @@ public class MapsActivity extends FragmentActivity implements
                 view.setVisibility(View.GONE);
             }
         });
+
+
+
+        setUpNavigationDrawer();
 
     }
 
@@ -266,6 +239,52 @@ public class MapsActivity extends FragmentActivity implements
     private void showMissingPermissionError() {
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getSupportFragmentManager(), "dialog");
+    }
+
+
+    /**
+     * setting a listner for naigation item click
+     */
+    public void setUpNavigationDrawer(){
+
+        this.navigationView =findViewById(R.id.navigation_view);
+        this.drawerLayout = findViewById(R.id.drawer_layout);
+        this.navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+                        drawerLayout.closeDrawers();
+
+                        onItemSelectectedNavigation(menuItem.getItemId());
+
+
+                        return true;
+                    }
+                });
+
+    }
+
+
+    /**
+     * method changing application flow depending on navigation item clicked
+     * used in on navigationItemSelectedListner
+     * @param id
+     */
+    public void onItemSelectectedNavigation(int id){
+
+        switch (id) {
+            case R.id.log_out:
+                FirebaseAuth.getInstance().signOut();
+                Intent homeIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(homeIntent);
+                finish();
+                break;
+
+        }
+
     }
 
 }
