@@ -1,77 +1,80 @@
 <resources>
     <string name="app_name">UberPaczka</string>
     <string name="email">E-mail</string>
-    <string name="password">Haslo</string>
-    <string name="repeat_password">Powtorz haslo</string>
-    <string name="log">Zaloguj</string>
-    <string name="rej">Nie masz jeszcze konta? Zarejestruj się</string>
-    <string name="name">Imie</string>
-    <string name="surname">Nazwisko</string>
-    <string name="date">Data urodzenia</string>
-    <string name="phone">Nr. Telefonu</string>
-    <string name="card">Nr. Karty</string>
-    <string name="ccv">Nr. CCV</string>
-    <string name="street">Ulica</string>
-    <string name="flat">Nr.</string>
-    <string name="city">Miasto</string>
-    <string name="registernew">Zarejestruj</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="log">Sign in</string>
+    <string name="rej">You dont have an account yet? Register</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="date">Date of birth</string>
+    <string name="phone">Phone number</string>
+    <string name="card">Card number</string>
+    <string name="ccv">CCV code</string>
+    <string name="street">Street</string>
+    <string name="flat">Flat</string>
+    <string name="city">City</string>
+    <string name="registernew">Sign up</string>
     <string name="logo">Logo</string>
     <string name="title_activity_maps">Map</string>
     <string name="driver">Driver panel</string>
 
     <!--every below strings were used in fragment summary for displaying string -->
-    <string name="summary">Podsumowanie</string>
-    <string name="destination">Destynacja</string>
-    <string name="from">Skad</string>
-    <string name="price">Cena</string>
-    <string name="package_size_small">Mala</string>
-    <string name="package_size_medium">Srednia</string>
-    <string name="package_size_grande">Duza</string>
-    <string name="choose_size">Wybierz rozmiar paczki</string>
-    <string name="accept">Potwierdzam</string>
+    <string name="summary">Summary</string>
+    <string name="destination">Destination</string>
+    <string name="from">From where</string>
+    <string name="price">Price</string>
+    <string name="package_size_small">Small</string>
+    <string name="package_size_medium">Medium</string>
+    <string name="package_size_grande">Big</string>
+    <string name="choose_size">Choose the size of the package</string>
+    <string name="accept">Confirm</string>
 
 
     <!--error messages-->
-    <string name="error_name">Nieprawidlowe dane</string>
-    <string name="error_surname">Nieprawidlowe dane</string>
+    <string name="error_name">Incorrect date</string>
+    <string name="error_surname">Incorrect date</string>
     <string name="error_date">Nieprawidlowy format daty</string>
-    <string name="error_phone_number">Nieprawidlowy numer telefonu</string>
-    <string name="error_email">Nieprawidłowy email</string>
-    <string name="error_card_number">Nieprawidlowy numer karty</string>
-    <string name="error_ccv">Nieprawidlowy kod bezpieczenstwa karty</string>
-    <string name="error_street">Nieprawidlowa nazwa ulicy</string>
-    <string name="error_flat">Nieprawidlowy numer domu</string>
-    <string name="error_city">Nieprawidlowa nazwa miasta</string>
+    <string name="error_phone_number">Incoorect phone number</string>
+    <string name="error_email">Incorrect email</string>
+    <string name="error_card_number">Incorrect card number</string>
+    <string name="error_ccv">Incorrect card security code</string>
+    <string name="error_street">Invalid street name</string>
+    <string name="error_flat">Invalid house number</string>
+    <string name="error_city">Incorrect city name</string>
     <string name="title_activity_login">Sign in</string>
-    <string name="error_blank">Pole nie może być puste</string>
-    <string name="error_password">Niepoprawny format hasła</string>
-    <string name="error_repeat_password">Hasla nie są takie same. Spróbuj ponownie</string>
-    <string name="confirm_password">Potwierdź hasło</string>
-    <string name="error_terms_checkbox">Należy zaapkceptować warunki umowy</string>
+    <string name="error_blank">The field can not be empty</string>
+    <string name="error_password">Incorrect password format</string>
+    <string name="error_repeat_password">The passwords are not the same. try again</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="error_terms_checkbox">You must accept the terms of the contract</string>
 
 
     <!-- registration strings-->
 
     <!-- first fragment -->
-    <string name="create_account">Utworz konto</string>
-    <string name="basic_inforamtion_layout">Podaj podstawowe informacje</string>
-    <string name="adrress_layout">Podaj adres zamieszkania</string>
-    <string name="card_number_layout">Podaj numer karty kredytowej</string>
-    <string name="username_password_layout">Podaj email i hasło</string>
-    <string name="privacy_terms">Zasady korzystania</string>
-    <string name="next_layout">Dalej</string>
-    <string name="on_registration_fail">Rejestracja nie powiodła sie</string>
-    <string name="check_internet_connection">Sprawdź połączenie z internetem</string>
-    <string name="understand_no_internet_connection">Zrozumiałem</string>
+    <string name="create_account">Create an account</string>
+    <string name="basic_inforamtion_layout">Provide basic informatione</string>
+    <string name="adrress_layout">Enter the address of residence</string>
+    <string name="card_number_layout">Enter the card number</string>
+    <string name="username_password_layout">Enter email and password</string>
+    <string name="privacy_terms">Terms of use</string>
+    <string name="next_layout">Next</string>
+    <string name="on_registration_fail">Registration failed</string>
+    <string name="check_internet_connection">Check the internet connection </string>
+    <string name="understand_no_internet_connection">I understood</string>
 
 
-    <string name="privacy_acceptance">Akceptuje warunki korzystania z usługi oferowane przez UberPaczka</string>
+    <string name="privacy_acceptance">I accept the terms of use of the service offered by UberPaczka</string>
 
 
     <!--item for navigation drawer-->
-    <string name="log_out">Wyloguj</string>
-    <string name="my_account">Moje konto</string>
-    <string name="settings">Ustawienia</string>
+    <string name="log_out">Log out</string>
+    <string name="my_account">My account</string>
+    <string name="settings">Settings</string>
 
+
+    <string name="hint_place_autocompletefragment_from">Pickup location</string>
+    <string name="hint_place_autocompletefragment_destination">Destination adress</string>
 
 </resources>

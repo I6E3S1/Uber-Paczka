@@ -17,6 +17,8 @@
     <dimen name="padding_botton">32dp</dimen>
     <dimen name="padding_textinput_layout">2dp</dimen>
 
+    <dimen name="place_autocompletefragment_margin">2dp</dimen>
+
     <dimen name="text_input_layout_radius">5dp</dimen>
 
     <!--in confirmation fragment-->
