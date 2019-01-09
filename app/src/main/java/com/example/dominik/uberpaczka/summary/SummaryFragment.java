@@ -47,8 +47,8 @@ public class SummaryFragment extends Fragment implements LoaderManager.LoaderCal
         Bundle bundle = getArguments();
         fromString = bundle.getString("from");
         destinationString = bundle.getString("destination");
-        Log.i("Fragment From", fromString);
-        Log.i("Fragment Destination", destinationString);
+//        Log.i("Fragment From", fromString);
+//        Log.i("Fragment Destination", destinationString);
 
 
         final View view = inflater.inflate(R.layout.fragment_summary, container, false);

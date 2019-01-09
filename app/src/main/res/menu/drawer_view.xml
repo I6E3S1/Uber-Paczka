@@ -2,19 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_username"
             android:icon="@drawable/logo_s"
-            android:title="@string/surname" />
+            android:title="Sebastian Nowak" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_my_account"
             android:icon="@drawable/ic_account_icon"
             android:title="@string/my_account" />
+        <item
+            android:id="@+id/nav_driver"
+            android:icon="@drawable/ic_driver_icon"
+            android:title="@string/driver" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_settings_icon"
             android:title="@string/settings" />
         <item
-            android:id="@+id/log_out"
+            android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout_icon"
             android:title="@string/log_out" />
 

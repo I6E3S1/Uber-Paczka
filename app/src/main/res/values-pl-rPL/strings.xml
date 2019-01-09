@@ -1,0 +1,82 @@
+<resources>
+    <!-- commons -->
+    <string name="common_approve">Zatwierdź</string>
+    <string name="app_name">UberPaczka</string>
+
+    <string name="email">E-mail</string>
+    <string name="password">Hasło</string>
+    <string name="repeat_password">Powtórz hasło</string>
+    <string name="log">Zaloguj</string>
+    <string name="rej">Nie masz jeszcze konta? Zarejestruj się</string>
+    <string name="name">Imię</string>
+    <string name="surname">Nazwisko</string>
+    <string name="date">Data urodzenia</string>
+    <string name="phone">Telefon</string>
+    <string name="card">Numer karty</string>
+    <string name="ccv">CCV</string>
+    <string name="street">Ulica</string>
+    <string name="flat">Nr domu</string>
+    <!--<string name="flat">Nr lokalu</string>-->
+    <string name="postal_code">Kod pocztowy</string>
+    <string name="city">Miasto</string>
+    <string name="registernew">Zarejestruj</string>
+    <string name="logo">Logo</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="driver">Panel kierowcy</string>
+
+    <!--every below strings were used in fragment summary for displaying string -->
+    <string name="summary">Podsumowanie</string>
+    <string name="destination">Miejsce docelowe</string>
+    <string name="from">Punkt odbioru</string>
+    <string name="price">Cena</string>
+    <string name="package_size_small">Mała</string>
+    <string name="package_size_medium">Średnia</string>
+    <string name="package_size_grande">Duża</string>
+    <string name="choose_size">Wybierz rozmiar paczki</string>
+    <string name="accept">Potwierdzam</string>
+
+    <!--error messages-->
+    <string name="error_name">Nieprawidłowe dane</string>
+    <string name="error_surname">Nieprawidłowe dane</string>
+    <string name="error_date">Nieprawidłowy format daty</string>
+    <string name="error_phone_number">Nieprawidłowy numer telefonu</string>
+    <string name="error_email">Nieprawidłowy email</string>
+    <string name="error_card_number">Nieprawidłowy numer karty</string>
+    <string name="error_ccv">Nieprawidłowy kod bezpieczeństwa karty</string>
+    <string name="error_street">Nieprawidłowa nazwa ulicy</string>
+    <string name="error_flat">Nieprawidłowy numer domu</string>
+    <string name="error_city">Nieprawidłowa nazwa miasta</string>
+    <string name="title_activity_login">Zaloguj się</string>
+    <string name="error_blank">Pole nie może być puste</string>
+    <string name="error_password">Niepoprawny format hasła</string>
+    <string name="error_repeat_password">Hasła nie są takie same. Spróbuj ponownie</string>
+    <string name="confirm_password">Potwierdź hasło</string>
+    <string name="error_terms_checkbox">Należy zaakceptować warunki umowy</string>
+
+    <!-- registration strings-->
+
+    <!-- first fragment -->
+    <string name="create_account">Utwórz konto</string>
+    <string name="basic_inforamtion_layout">Podaj podstawowe informacje</string>
+    <string name="adrress_layout">Podaj adres zamieszkania</string>
+    <string name="card_number_layout">Podaj numer karty kredytowej</string>
+    <string name="username_password_layout">Podaj email i hasło</string>
+    <string name="privacy_terms">Zasady korzystania</string>
+    <string name="next_layout">Dalej</string>
+    <string name="on_registration_fail">Rejestracja nie powiodła sie</string>
+    <string name="check_internet_connection">Sprawdź połączenie z Internetem</string>
+    <string name="understand_no_internet_connection">Zrozumiałem</string>
+
+    <string name="privacy_acceptance">Akceptuję warunki korzystania z usług oferowanych przez UberPaczka</string>
+
+    <!--item for navigation drawer-->
+    <string name="log_out">Wyloguj</string>
+    <string name="my_account">Moje konto</string>
+    <string name="settings">Ustawienia</string>
+
+    <!--driver panel -->
+    <string name="register_driver_header">Rejestracja kierowcy</string>
+
+    <string name="hint_place_autocompletefragment_from">Punktu odbioru</string>
+    <string name="hint_place_autocompletefragment_destination">Adres docelowy</string>
+</resources>
