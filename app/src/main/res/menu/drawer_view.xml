@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/logo_s"
-            android:title="@string/surname" />
-        <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/my_account"
             android:icon="@drawable/ic_account_icon"
             android:title="@string/my_account" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_settings_icon"
-            android:title="@string/settings" />
+            android:id="@+id/nav_my_deliveries"
+            android:icon="@drawable/ic_package_black_24dp"
+            android:title="@string/my_shipment" />
+        <item
+            android:id="@+id/nav_driver"
+            android:icon="@drawable/ic_driver_icon_black_24dp"
+            android:title="@string/driver_panel" />
         <item
             android:id="@+id/log_out"
             android:icon="@drawable/ic_logout_icon"

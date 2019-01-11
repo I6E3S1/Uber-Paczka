@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_summary"
+        android:layout_weight="0.2"
+        android:text="@string/summary"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorPrimaryDark" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:text="@string/choose_size"
+        android:textAlignment="center"
+        android:textColor="@color/grey_subtitle" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/view1"
+                android:layout_width="@dimen/package_size"
+                android:layout_height="@dimen/package_size"
+                android:layout_centerHorizontal="true"
+                android:elevation="12dp"
+                app:cardCornerRadius="@dimen/radius_package_size">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/package_size"
+                    android:background="@color/colorAccent"
+                    android:clickable="true"
+                    android:scaleType="centerCrop" />
+
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/quantity_small_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/margin_summary"
+                android:layout_marginRight="@dimen/margin_summary"
+                android:text="@string/package_size_small"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/view2"
+                android:layout_width="@dimen/package_size"
+                android:layout_height="@dimen/package_size"
+                android:layout_centerHorizontal="true"
+                android:elevation="12dp"
+                app:cardCornerRadius="@dimen/radius_package_size">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/package_size"
+                    android:background="@color/colorAccent"
+                    android:clickable="true"
+                    android:scaleType="centerCrop" />
+            </android.support.v7.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/quantity_medium_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view2"
+                android:layout_centerHorizontal="true"
+                android:text="@string/package_size_medium"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/view3"
+                android:layout_width="@dimen/package_size"
+                android:layout_height="@dimen/package_size"
+                android:layout_centerHorizontal="true"
+                android:elevation="12dp"
+                app:cardCornerRadius="@dimen/radius_package_size">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/package_size"
+                    android:background="@color/colorAccent"
+                    android:clickable="true"
+                    android:scaleType="centerCrop" />
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/quantity_big_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/margin_summary"
+                android:layout_marginRight="@dimen/margin_summary"
+                android:text="@string/package_size_grande"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

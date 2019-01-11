@@ -32,10 +32,10 @@
 
 
     <!--error messages-->
-    <string name="error_name">Incorrect date</string>
-    <string name="error_surname">Incorrect date</string>
-    <string name="error_date">Nieprawidlowy format daty</string>
-    <string name="error_phone_number">Incoorect phone number</string>
+    <string name="error_name">Incorrect data</string>
+    <string name="error_surname">Incorrect data</string>
+    <string name="error_date">Invalid date format</string>
+    <string name="error_phone_number">Incorrect phone number</string>
     <string name="error_email">Incorrect email</string>
     <string name="error_card_number">Incorrect card number</string>
     <string name="error_ccv">Incorrect card security code</string>
@@ -54,7 +54,7 @@
 
     <!-- first fragment -->
     <string name="create_account">Create an account</string>
-    <string name="basic_inforamtion_layout">Provide basic informatione</string>
+    <string name="basic_inforamtion_layout">Provide basic information</string>
     <string name="adrress_layout">Enter the address of residence</string>
     <string name="card_number_layout">Enter the card number</string>
     <string name="username_password_layout">Enter email and password</string>
@@ -71,10 +71,20 @@
     <!--item for navigation drawer-->
     <string name="log_out">Log out</string>
     <string name="my_account">My account</string>
-    <string name="settings">Settings</string>
+    <string name="driver_panel">Make money driving</string>
+    <string name="my_shipment">My shipment</string>
 
 
     <string name="hint_place_autocompletefragment_from">Pickup location</string>
     <string name="hint_place_autocompletefragment_destination">Destination adress</string>
+    <string name="error_loading_user_data">Can\'t load user data</string>
+
+    <string name="mail_navigation_header">E-mail</string>
+
+    <string name="order_checkout">Order</string>
+
+    <string name="recipient_name">Recipient name</string>
+
+    <string name="recipient_phone">Recipient phone number</string>
 
 </resources>

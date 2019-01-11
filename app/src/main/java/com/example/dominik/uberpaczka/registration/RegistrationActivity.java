@@ -1,12 +1,12 @@
 package com.example.dominik.uberpaczka.registration;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.dominik.uberpaczka.R;
-import com.example.dominik.uberpaczka.registration.registration_usable.CustomRegistrationAdapter;
-import com.example.dominik.uberpaczka.registration.registration_usable.CustomViewPager;
-import com.example.dominik.uberpaczka.registration.registration_usable.UserInfo;
+import com.example.dominik.uberpaczka.registration.usable.CustomRegistrationAdapter;
+import com.example.dominik.uberpaczka.registration.usable.CustomViewPager;
+import com.example.dominik.uberpaczka.registration.usable.UserInfo;
 
 public class RegistrationActivity extends AppCompatActivity {
 

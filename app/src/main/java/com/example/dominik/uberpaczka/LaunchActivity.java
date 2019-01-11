@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.dominik.uberpaczka.login.LoginActivity;
+import com.example.dominik.uberpaczka.maps.MapsActivity;
+import com.example.dominik.uberpaczka.utils.Checker;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LaunchActivity extends AppCompatActivity {

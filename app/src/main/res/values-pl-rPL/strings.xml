@@ -71,10 +71,21 @@
     <!--item for navigation drawer-->
     <string name="log_out">Wyloguj</string>
     <string name="my_account">Moje konto</string>
-    <string name="settings">Ustawienia</string>
+    <string name="driver_panel">Zarabiaj jezdżąc</string>
+    <string name="my_shipment">Moje przesyłki</string>
 
 
     <string name="hint_place_autocompletefragment_from">Miejsce podjęcia paczki</string>
     <string name="hint_place_autocompletefragment_destination">Miejsce docelowe</string>
+    <string name="error_loading_user_data">Nie można załadować danych</string>
+
+
+    <string name="mail_navigation_header">E-mail</string>
+
+    <string name="order_checkout">Zamów</string>
+
+    <string name="recipient_name">Imie i nazwisko odbiorcy</string>
+
+    <string name="recipient_phone">Numer telefonu odbiorcy</string>
 
 </resources>

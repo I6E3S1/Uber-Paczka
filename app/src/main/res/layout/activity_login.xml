@@ -6,23 +6,23 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:padding="@dimen/padding_registration_fragment"
-    tools:context=".LoginActivity">
+    tools:context=".login.LoginActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textAlignment="center"
-        android:textSize="32sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/textColor" />
+        android:textColor="@color/textColor"
+        android:textSize="32sp" />
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
         android:layout_marginTop="@dimen/margin_top"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/logo"
         android:src="@drawable/logo_s"
         app:layout_constraintBottom_toTopOf="@id/email_login_layout"
@@ -90,9 +90,9 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@null"
             android:backgroundTint="@color/colorPrimaryDark"
             android:ems="8"
-            android:background="@null"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textColor="@color/textColor"

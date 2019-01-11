@@ -10,6 +10,7 @@
 
     <dimen name="margin_top">8dp</dimen>
 
+    <dimen name="left_mavigation_header_margin">8dp</dimen>
 
     <!--registration fragment-->
     <dimen name="padding_registration_fragment">24dp</dimen>
@@ -17,10 +18,23 @@
     <dimen name="padding_botton">32dp</dimen>
     <dimen name="padding_textinput_layout">2dp</dimen>
 
-    <dimen name="place_autocompletefragment_margin">2dp</dimen>
+    <dimen name="place_autocompletefragment_margin">-32dp</dimen>
 
     <dimen name="text_input_layout_radius">5dp</dimen>
 
     <!--in confirmation fragment-->
     <dimen name="paddig_left_registration_checkbox">16dp</dimen>
+
+    <dimen name="confiramtion_layout_progressbar">72dp</dimen>
+
+    <dimen name="myaccount_fragment_progressbar">36dp</dimen>
+
+    <dimen name="place_autocompleteview_fragment_elevation">12dp</dimen>
+
+
+    <dimen name="shrine_toolbar_image_offset_top">48dp</dimen>
+    <dimen name="shrine_toolbar_offset_top">268dp</dimen>
+
+
+    <dimen name="order_summary_route_height">150dp</dimen>
 </resources>

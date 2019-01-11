@@ -17,4 +17,12 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="expanded_text_appearance" parent="@android:style/TextAppearance.Large">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="collapsed_text_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
 </resources>

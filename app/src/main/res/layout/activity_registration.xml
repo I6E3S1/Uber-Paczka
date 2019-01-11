@@ -7,7 +7,7 @@
     tools:context=".registration.RegistrationActivity">
 
 
-    <com.example.dominik.uberpaczka.registration.registration_usable.CustomViewPager
+    <com.example.dominik.uberpaczka.registration.usable.CustomViewPager
         android:id="@+id/registration_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
