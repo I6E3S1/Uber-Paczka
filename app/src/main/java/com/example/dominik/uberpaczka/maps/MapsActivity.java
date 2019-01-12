@@ -74,6 +74,7 @@ public class MapsActivity extends FragmentActivity implements
     private boolean mPermissionDenied = false;
     private String TAG = "MAPS";
     private HashMap<String, String> locationHashMap = new HashMap<>();
+    private OrderInfo orderInfo = new OrderInfo();
 
 
     private View.OnClickListener navigationListener = new View.OnClickListener() {
@@ -239,31 +240,31 @@ public class MapsActivity extends FragmentActivity implements
     }
 
 
-    /**
-     * change place langtitude and longtitude to string adreess
-     *
-     * @param place
-     * @return adreess as String
-     * @throws Exception
-     */
-    public String decodeAdress(Place place) throws Exception {
-
-        String g = String.valueOf(place.getName());
-
-        Geocoder geocoder = new Geocoder(getBaseContext());
-        List<Address> addresses;
-
-        addresses = geocoder.getFromLocationName(g, 1);
-        if (addresses != null && !addresses.equals("")) {
-            String res = search(addresses, mMap);
-            return res;
-        }
-
-        Log.i(TAG, "geocoder error: " + g);
-        Log.i(TAG, "Place: " + place.getName());
-
-        return null;
-    }
+//    /**
+//     * change place langtitude and longtitude to string adreess
+//     *
+//     * @param place
+//     * @return adreess as String
+//     * @throws Exception
+//     */
+//    public String decodeAdress(Place place) throws Exception {
+//
+//        String g = String.valueOf(place.getName());
+//
+//        Geocoder geocoder = new Geocoder(getBaseContext());
+//        List<Address> addresses;
+//
+//        addresses = geocoder.getFromLocationName(g, 1);
+//        if (addresses != null && !addresses.equals("")) {
+//            String res = search(addresses, mMap);
+//            return res;
+//        }
+//
+//        Log.i(TAG, "geocoder error: " + g);
+//        Log.i(TAG, "Place: " + place.getName());
+//
+//        return null;
+//    }
 
 
     /**
@@ -278,9 +279,10 @@ public class MapsActivity extends FragmentActivity implements
 
                 String result;
                 try {
-                    result = decodeAdress(place);
-                    if (result == null) throw new Exception();
-                    locationHashMap.put("from", result);
+                    //result = decodeAdress(place);
+                    if (place == null) throw new Exception();
+                    locationHashMap.put("from", place.getId());
+                    orderInfo.setFromName(String.valueOf(place.getName()));
                     destinationCardView.setVisibility(View.VISIBLE);
                 } catch (Exception e) {
                     Log.e(TAG, e.getMessage());
@@ -301,9 +303,10 @@ public class MapsActivity extends FragmentActivity implements
 
                 String result = null;
                 try {
-                    result = decodeAdress(place);
-                    if (result == null) throw new Exception();
-                    locationHashMap.put("destination", result);
+                    //result = decodeAdress(place);
+                    if (place == null) throw new Exception();
+                    locationHashMap.put("destination", place.getId());
+                    orderInfo.setDestinationName(String.valueOf(place.getName()));
                     openSummaryFragment();
                 } catch (Exception e) {
                     Log.e(TAG, e.getMessage());
@@ -415,7 +418,6 @@ public class MapsActivity extends FragmentActivity implements
     public void openSummaryFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        OrderInfo orderInfo = new OrderInfo();
         orderInfo.setFrom(locationHashMap.get("from"));
         orderInfo.setDestination(locationHashMap.get("destination"));
         Bundle bundle = new Bundle();

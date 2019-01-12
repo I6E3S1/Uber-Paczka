@@ -37,7 +37,7 @@ public class PackageSizeFragment extends Fragment /**/ {
                     orderInfo.setMediumPackagesQuantity(orderInfo.getMediumPackagesQuantity() + 1);
                     break;
                 case R.id.imageView3:
-                    orderInfo.setBigPackagesQuantity(orderInfo.getMediumPackagesQuantity() + 1);
+                    orderInfo.setBigPackagesQuantity(orderInfo.getBigPackagesQuantity() + 1);
                     break;
                 default:
                     return;
@@ -97,6 +97,5 @@ public class PackageSizeFragment extends Fragment /**/ {
 
 
     }
-
 
 }

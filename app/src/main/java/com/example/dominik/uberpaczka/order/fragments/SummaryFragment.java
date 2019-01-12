@@ -1,6 +1,7 @@
 package com.example.dominik.uberpaczka.order.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dominik.uberpaczka.R;
 import com.example.dominik.uberpaczka.maps.MapsActivity;
@@ -26,6 +28,14 @@ import com.example.dominik.uberpaczka.utils.Checker;
 import com.example.dominik.uberpaczka.utils.Editable;
 import com.example.dominik.uberpaczka.validators_patterns.PhoneValidator;
 import com.example.dominik.uberpaczka.validators_patterns.Validable;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Objects;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by marek on 09.01.2019.
@@ -69,8 +79,8 @@ public class SummaryFragment extends Fragment implements LoaderManager.LoaderCal
         orderButton = view.findViewById(R.id.acceptance_button);
         pickUpTextView = view.findViewById(R.id.pickup_textview);
         destinationTextView = view.findViewById(R.id.destination_textview);
-        pickUpTextView.setText(orderInfo.getFrom());
-        destinationTextView.setText(orderInfo.getDestination());
+        pickUpTextView.setText(orderInfo.getFromName());
+        destinationTextView.setText(orderInfo.getDestinationName());
         createValidationPatterns();
         setUpButtonListeners();
         getLoader();
@@ -95,11 +105,39 @@ public class SummaryFragment extends Fragment implements LoaderManager.LoaderCal
             public void onClick(View v) {
                 if (validate()) {
                     if (Checker.checkInternetConnection(getContext(), getFragmentManager())) {
+                        orderInfo.setRecipient(receipientData.getEditText().getText().toString());
+                        orderInfo.setRecipientPhone(receipientPhone.getEditText().getText().toString());
+                        orderInfo.setUserID(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
+                        sendOrderInfo();
+                        Toast toast = Toast.makeText(getContext(), "Succes", Toast.LENGTH_LONG);
+                        toast.show();
+                        Log.i("INFO",orderInfo.getOrderInfoMap().toString());
+                        closeFragment();
 
                     }
                 }
             }
         });
+    }
+
+    private void sendOrderInfo() {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("packages").document(orderInfo.getPackageID())
+                .set(orderInfo.getOrderInfoMap())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.w(TAG, "DocumentSnapshot succesfully added");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
     }
 
     @Override
@@ -128,19 +166,22 @@ public class SummaryFragment extends Fragment implements LoaderManager.LoaderCal
     public void onLoadFinished(@NonNull Loader<Long> loader, Long aLong) {
 
         Log.i("Loader", "Finished working");
-        updateUI(aLong);
+        orderInfo.setPrice(String.valueOf(10 + orderInfo.multiplier() * Double.valueOf(aLong/1000)));
+        Log.i("aLong", String.valueOf(aLong));
+        Log.i("multi",String.valueOf(orderInfo.multiplier()));
+        updateUI(orderInfo.getPrice());//PRICE
     }
 
     @Override
     public void onLoaderReset(@NonNull Loader<Long> loader) {
-        updateUI(Long.valueOf(0));
+        updateUI("*'*");
     }
 
 
-    public void updateUI(Long aLong) {
+    public void updateUI(String price) {
         TextView textView = getView().findViewById(R.id.amount_price_textview);
         if (textView != null)
-            textView.setText(aLong.toString());
+            textView.setText(price);
     }
 
 

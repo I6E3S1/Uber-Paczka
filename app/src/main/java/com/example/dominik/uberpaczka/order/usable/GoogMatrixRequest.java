@@ -16,11 +16,9 @@ import java.util.Objects;
 public class GoogMatrixRequest {
 
 
-    private static final String API_KEY = "AIzaSyAqsHACGNlbVzm2pw7822v0XnkaNRjSq-c";
+    private static final String API_KEY = "AIzaSyCt-wPuaGp9bNeOGS3q7AnOx9qQuFov1lM";
     private String str_from;
     private String str_to;
-    private final String URL_REQUEST = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + str_from
-            + "&destinations=" + str_to + "&mode=driving&language=fr-FR&avoid=tolls&key=" + API_KEY;
 
 
     private OkHttpClient client = new OkHttpClient();
@@ -28,7 +26,9 @@ public class GoogMatrixRequest {
     //main request
 
     public Long transfer() {
-        Log.i("TRANSFER.F", "begin");
+        String URL_REQUEST = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=place_id:" + str_from
+                + "&destinations=place_id:" + str_to + "&mode=driving&language=pl-PL&avoid=tolls&key=" + API_KEY;
+        Log.i("TRANSFER.F", URL_REQUEST);
         Log.i("TRANSFER.F", str_from);
         Log.i("TRANSFER.F", str_to);
         String response = run(URL_REQUEST);
@@ -141,6 +141,7 @@ public class GoogMatrixRequest {
     }
 
     public void setStr_to(String str_to) {
+
         this.str_to = str_to;
     }
 }
