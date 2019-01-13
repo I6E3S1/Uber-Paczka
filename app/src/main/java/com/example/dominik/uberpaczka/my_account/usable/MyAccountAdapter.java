@@ -1,5 +1,6 @@
 package com.example.dominik.uberpaczka.my_account.usable;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,19 +17,30 @@ import java.util.List;
 
 public class MyAccountAdapter extends RecyclerView.Adapter<MyAccountAdapter.MyViewHolder> {
 
-
     private List<UserData> userDataList;
+    private Context mContext;
+    private CustomClickListener clickListener;
 
-    public MyAccountAdapter(List<UserData> userDataList) {
+
+    public MyAccountAdapter(List<UserData> userDataList, Context context, CustomClickListener clickListner) {
         this.userDataList = userDataList;
+        this.mContext = context;
+        this.clickListener = clickListner;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.layout_myaccount_adapter, parent, false);
+        final MyViewHolder mViewHolder = new MyViewHolder(itemView);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.onItemClick(v, mViewHolder.getPosition());
+            }
+        });
 
-        return new MyViewHolder(itemView);
+        return mViewHolder;
     }
 
     @Override
@@ -44,6 +56,7 @@ public class MyAccountAdapter extends RecyclerView.Adapter<MyAccountAdapter.MyVi
         return userDataList.size();
     }
 
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView description;
@@ -55,6 +68,7 @@ public class MyAccountAdapter extends RecyclerView.Adapter<MyAccountAdapter.MyVi
             value = view.findViewById(R.id.my_account_value);
 
         }
+
     }
 }
 

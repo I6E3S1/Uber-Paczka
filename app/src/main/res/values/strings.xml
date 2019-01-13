@@ -17,7 +17,10 @@
     <string name="registernew">Sign up</string>
     <string name="logo">Logo</string>
     <string name="title_activity_maps">Map</string>
+    <string name="adress">Adress</string>
     <string name="driver">Driver panel</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_email">New email</string>
 
     <!--every below strings were used in fragment summary for displaying string -->
     <string name="summary">Summary</string>
@@ -60,9 +63,15 @@
     <string name="username_password_layout">Enter email and password</string>
     <string name="privacy_terms">Terms of use</string>
     <string name="next_layout">Next</string>
+    <string name="name_change_layout">Enter new name</string>
+    <string name="surname_change_layout">Enter new surname</string>
+    <string name="phone_change_layout">Enter new phone</string>
+    <string name="email_change_layout">Enter new email</string>
     <string name="on_registration_fail">Registration failed</string>
     <string name="check_internet_connection">Check the internet connection </string>
     <string name="understand_no_internet_connection">I understood</string>
+    <string name="password_change_layout">Enter new password</string>
+    <string name="update_account">Update account</string>
 
 
     <string name="privacy_acceptance">I accept the terms of use of the service offered by UberPaczka</string>

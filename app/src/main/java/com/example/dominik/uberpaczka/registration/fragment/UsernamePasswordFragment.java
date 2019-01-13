@@ -79,7 +79,7 @@ public class UsernamePasswordFragment extends Fragment implements Validable, Reg
     @Override
     public void createValidationPatterns(){
         passwordValidator =new PasswordValidator(passwordLayout, getString(R.string.error_password), getString(R.string.error_blank));
-        emailValidator =new EmailValidator(repeatPasswordLayout, getString(R.string.error_password), getString(R.string.error_blank));
+        emailValidator = new EmailValidator(emailLayout, getString(R.string.error_password), getString(R.string.error_blank));
     }
 
 
@@ -100,7 +100,7 @@ public class UsernamePasswordFragment extends Fragment implements Validable, Reg
             repeatPasswordLayout.setError(getString(R.string.error_repeat_password));
         }
 
-        return passwordValidator.validate()&passwordValidator.validate()&passwordMatches;
+        return emailValidator.validate() & passwordValidator.validate() & passwordMatches;
     }
 
     @Override

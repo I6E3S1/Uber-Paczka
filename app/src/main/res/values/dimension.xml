@@ -13,7 +13,7 @@
     <dimen name="left_mavigation_header_margin">8dp</dimen>
 
     <!--registration fragment-->
-    <dimen name="padding_registration_fragment">24dp</dimen>
+    <dimen name="padding_fragments">24dp</dimen>
     <dimen name="top_margin">16dp</dimen>
     <dimen name="padding_botton">32dp</dimen>
     <dimen name="padding_textinput_layout">2dp</dimen>

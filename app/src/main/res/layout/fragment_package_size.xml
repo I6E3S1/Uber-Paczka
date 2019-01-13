@@ -56,7 +56,8 @@
                     android:layout_height="@dimen/package_size"
                     android:background="@color/colorAccent"
                     android:clickable="true"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_small_package_icon" />
 
 
             </android.support.v7.widget.CardView>
@@ -98,7 +99,8 @@
                     android:layout_height="@dimen/package_size"
                     android:background="@color/colorAccent"
                     android:clickable="true"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_medium_package_icon" />
             </android.support.v7.widget.CardView>
 
 
@@ -137,7 +139,8 @@
                     android:layout_height="@dimen/package_size"
                     android:background="@color/colorAccent"
                     android:clickable="true"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_big_package_icon" />
 
             </android.support.v7.widget.CardView>
 

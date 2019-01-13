@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.dominik.uberpaczka.R;
 import com.example.dominik.uberpaczka.registration.RegistrationActivity;
@@ -37,6 +38,7 @@ public class PostalAdressFragment extends Fragment implements Validable, Registr
     private TextInputLayout flatInputLayout;
     private TextInputLayout streetInputLayout;
     private TextInputLayout cityInputLayout;
+    private TextView headerView;
 
     private UserInfo userInfo;
 
@@ -49,11 +51,15 @@ public class PostalAdressFragment extends Fragment implements Validable, Registr
 
         View view = inflater.inflate(R.layout.fragment_postaladress, container, false);
 
-        userInfo=(UserInfo)getArguments().getSerializable("user_info");
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            userInfo = (UserInfo) bundle.getSerializable("user_info");
+        }
 
         flatInputLayout=view.findViewById(R.id.flat_textinput_layout);
         streetInputLayout=view.findViewById(R.id.street_textinput_layout);
         cityInputLayout=view.findViewById(R.id.city_textinput_layout);
+        headerView = view.findViewById(R.id.createAcoount1);
 
         nextButton=view.findViewById(R.id.button_next_detail1);
 
@@ -109,9 +115,30 @@ public class PostalAdressFragment extends Fragment implements Validable, Registr
     public void setInformation() throws Exception {
         if (userInfo == null) return;
 
-        userInfo.setFlat(flatInputLayout.getEditText().getText().toString());
-        userInfo.setStreet(streetInputLayout.getEditText().getText().toString());
-        userInfo.setCity(cityInputLayout.getEditText().getText().toString());
+        userInfo.getAdress().setFlat(flatInputLayout.getEditText().getText().toString());
+        userInfo.getAdress().setStreet(streetInputLayout.getEditText().getText().toString());
+        userInfo.getAdress().setCity(cityInputLayout.getEditText().getText().toString());
 
+    }
+
+    public Button getNextButton() {
+        return nextButton;
+    }
+
+
+    public TextInputLayout getFlatInputLayout() {
+        return flatInputLayout;
+    }
+
+    public TextInputLayout getStreetInputLayout() {
+        return streetInputLayout;
+    }
+
+    public TextInputLayout getCityInputLayout() {
+        return cityInputLayout;
+    }
+
+    public TextView getHeaderView() {
+        return headerView;
     }
 }

@@ -14,6 +14,7 @@ public class OrderInfo implements Serializable {
 
 
     private String userID;
+    private String driverID = "";
     private Integer smallPackagesQuantity;
     private Integer mediumPackagesQuantity;
     private Integer bigPackagesQuantity;
@@ -25,13 +26,15 @@ public class OrderInfo implements Serializable {
     private String recipient;
     private String recipientPhone;
     private String price;
-    private String packageID = String.valueOf(hashCode()) ;
+    private PackageStatus packageStatus;
 
     public OrderInfo() {
         smallPackagesQuantity = 0;
         mediumPackagesQuantity = 0;
         bigPackagesQuantity = 0;
+
     }
+
 
     public Double multiplier(){
         if(smallPackagesQuantity!=0) {
@@ -50,11 +53,14 @@ public class OrderInfo implements Serializable {
 
     public Map<String, String> getOrderInfoMap() {
         Map<String, String> orderInfoMap = new HashMap<>();
+        packageStatus = PackageStatus.waiting_for_driver;
 
-        orderInfoMap.put("packagae_ID",packageID);
+
         orderInfoMap.put("user_id", userID);
+        orderInfoMap.put("driver_ID", driverID);
         orderInfoMap.put("from_adress", fromName);
         orderInfoMap.put("from_ID",from);
+        orderInfoMap.put("package_status", packageStatus.name());
         orderInfoMap.put("destinatin adress", destinationName);
         orderInfoMap.put("destination_ID",destination);
         orderInfoMap.put("small_packages_quantity", smallPackagesQuantity.toString());
@@ -87,15 +93,8 @@ public class OrderInfo implements Serializable {
                 Objects.equals(getPrice(), orderInfo.getPrice());
     }
 
-    @Override
-    public int hashCode() {
 
-        return Objects.hash(getUserID(), getSmallPackagesQuantity(), getMediumPackagesQuantity(), getBigPackagesQuantity(), getFrom(), getDestination(), getFromName(), getDestinationName(), getDate(), getRecipient(), getRecipientPhone(), getPrice());
-    }
 
-    public String getPackageID() {
-        return packageID;
-    }
 
     public Integer getSmallPackagesQuantity() {
         return smallPackagesQuantity;

@@ -1,7 +1,6 @@
 package com.example.dominik.uberpaczka.order.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -53,7 +52,7 @@ public class SummaryFragment extends Fragment implements LoaderManager.LoaderCal
     private Button orderButton;
     private TextView pickUpTextView;
     private TextView destinationTextView;
-
+    private TextView priceTextView;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,6 +78,7 @@ public class SummaryFragment extends Fragment implements LoaderManager.LoaderCal
         orderButton = view.findViewById(R.id.acceptance_button);
         pickUpTextView = view.findViewById(R.id.pickup_textview);
         destinationTextView = view.findViewById(R.id.destination_textview);
+        priceTextView = view.findViewById(R.id.amount_price_textview);
         pickUpTextView.setText(orderInfo.getFromName());
         destinationTextView.setText(orderInfo.getDestinationName());
         createValidationPatterns();
@@ -124,7 +124,7 @@ public class SummaryFragment extends Fragment implements LoaderManager.LoaderCal
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("packages").document(orderInfo.getPackageID())
+        db.collection("packages").document()
                 .set(orderInfo.getOrderInfoMap())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -179,9 +179,8 @@ public class SummaryFragment extends Fragment implements LoaderManager.LoaderCal
 
 
     public void updateUI(String price) {
-        TextView textView = getView().findViewById(R.id.amount_price_textview);
-        if (textView != null)
-            textView.setText(price);
+        if (priceTextView != null)
+            priceTextView.setText(price);
     }
 
 

@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -88,10 +87,7 @@ public class MapsActivity extends FragmentActivity implements
     private View.OnClickListener backListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .remove(fragmentManager.findFragmentById(R.id.summary_container))
-                    .commit();
+            removeFragment(R.id.summary_container);
             changeNavigationButtonBehaviourOnCloseFragemnt();
 
         }
@@ -424,8 +420,11 @@ public class MapsActivity extends FragmentActivity implements
         bundle.putSerializable("order_info", orderInfo);
         PackageSizeFragment fragment = new PackageSizeFragment();
         fragment.setArguments(bundle);
-        fragmentTransaction.add(R.id.summary_container, fragment);
-        fragmentTransaction.commitAllowingStateLoss();
+        fragmentTransaction
+                .add(R.id.summary_container, fragment)
+                .addToBackStack(null)
+                .commitAllowingStateLoss();
+
         changeNavigationButtonBehaviourOnOpenFragment();
         hidePlaceAutoCompletePickUpFragment();
         hidePlaceAutoCompleteDestinationFragment();
@@ -435,10 +434,11 @@ public class MapsActivity extends FragmentActivity implements
     public void openAccountFragment(Fragment fragment) {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
         fragmentManager.beginTransaction()
-                .remove(fragmentManager.findFragmentById(R.id.summary_container))
+                .replace(R.id.flContent, fragment)
+                .addToBackStack(null)
                 .commit();
+        removeFragment(R.id.summary_container);
         changeNavigationButtonBehaviourOnCloseFragemnt();
         hidePlaceAutoCompleteDestinationFragment();
         hidePlaceAutoCompletePickUpFragment();
@@ -491,6 +491,32 @@ public class MapsActivity extends FragmentActivity implements
 
     public void cleanPlaceAutoCompletePickUpFragment() {
         autocompleteFragment.setText("");
+    }
+
+    public void removeFragment(int id) {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment tempFragment = fragmentManager.findFragmentById(id);
+
+        if (tempFragment != null) {
+            fragmentTransaction.remove(tempFragment)
+                    .commit();
+        }
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStackImmediate();
+        } else if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            getSupportFragmentManager().popBackStackImmediate();
+            showPlaceAutoCompletePickUpFragment();
+        } else {
+            super.onBackPressed();
+        }
     }
 
 

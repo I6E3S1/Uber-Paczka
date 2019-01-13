@@ -1,6 +1,8 @@
 package com.example.dominik.uberpaczka.registration.usable;
 
 
+import com.example.dominik.uberpaczka.utils.UsernameFirestore;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,11 +17,38 @@ public class UserInfo implements Serializable {
     private String surname;
     private String date;
     private String phone;
-    private String creditCardNumber;
-    private String ccv;
-    private String street;
-    private String flat;
-    private String city;
+    private AdressInfo adress;
+    private CardInfo card;
+
+
+    public UserInfo() {
+        adress = new AdressInfo();
+        card = new CardInfo();
+    }
+
+
+    public Map<String, Object> getUserInfo() {
+
+
+        Map<String, Object> userInfoMap = new HashMap<>();
+        userInfoMap.put(UsernameFirestore.userID.name(), userID);
+
+        userInfoMap.put(UsernameFirestore.name.name(), name);
+
+        userInfoMap.put(UsernameFirestore.surname.name(), surname);
+
+        userInfoMap.put(UsernameFirestore.date.name(), date);
+
+        userInfoMap.put(UsernameFirestore.phone.name(), phone);
+
+        userInfoMap.put(UsernameFirestore.adress.name(), adress.getAdressMap());
+
+        userInfoMap.put(UsernameFirestore.card.name(), card.getCardInfoMap());
+
+
+        return userInfoMap;
+    }
+
 
     public String getPassword() {
         return password;
@@ -35,33 +64,6 @@ public class UserInfo implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Map<String, String> getUserInfo() {
-
-
-        Map<String, String> userInfoMap = new HashMap<>();
-        userInfoMap.put("userID", userID);
-
-        userInfoMap.put("name", name);
-
-        userInfoMap.put("surname", surname);
-
-        userInfoMap.put("date", date);
-
-        userInfoMap.put("phone", phone);
-
-        userInfoMap.put("creditCardNumber", creditCardNumber);
-
-        userInfoMap.put("ccv", ccv);
-
-        userInfoMap.put("street", street);
-
-        userInfoMap.put("flat", flat);
-
-        userInfoMap.put("city", city);
-
-        return userInfoMap;
     }
 
     public String getUserID() {
@@ -104,45 +106,15 @@ public class UserInfo implements Serializable {
         this.phone = phone;
     }
 
-    public String getCreditCardNumber() {
-        return creditCardNumber;
+    public AdressInfo getAdress() {
+        return adress;
     }
 
-    public void setCreditCardNumber(String creditCardNumber) {
-        this.creditCardNumber = creditCardNumber;
+    public CardInfo getCard() {
+        return card;
     }
 
-    public String getCcv() {
-        return ccv;
-    }
 
-    public void setCcv(String ccv) {
-        this.ccv = ccv;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getFlat() {
-        return flat;
-    }
-
-    public void setFlat(String flat) {
-        this.flat = flat;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
 }
 
 

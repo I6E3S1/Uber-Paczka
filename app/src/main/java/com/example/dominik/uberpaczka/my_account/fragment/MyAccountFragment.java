@@ -16,10 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dominik.uberpaczka.R;
 import com.example.dominik.uberpaczka.maps.MapsActivity;
 import com.example.dominik.uberpaczka.maps.usable.MapsInterface;
+import com.example.dominik.uberpaczka.my_account.usable.CustomClickListener;
 import com.example.dominik.uberpaczka.my_account.usable.MyAccountAdapter;
 import com.example.dominik.uberpaczka.my_account.usable.UserData;
 import com.example.dominik.uberpaczka.registration.usable.UserInfo;
@@ -121,7 +123,16 @@ public class MyAccountFragment extends Fragment {
         list = new ArrayList<>();
 
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        myAccountAdapter = new MyAccountAdapter(list);
+        CustomClickListener clickListener = new CustomClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Toast.makeText(getContext(), list.get(position).getDescription(), Toast.LENGTH_LONG).show();
+                swapFragment(position);
+
+
+            }
+        };
+        myAccountAdapter = new MyAccountAdapter(list, getContext(), clickListener);
         mRecyclerView.setAdapter(myAccountAdapter);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
 
@@ -133,11 +144,23 @@ public class MyAccountFragment extends Fragment {
 
     public void updateRecycleView() {
 
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        StringBuilder adressStringBuilder = new StringBuilder()
+                .append(userInfo.getAdress().getFlat())
+                .append(" ")
+                .append(userInfo.getAdress().getStreet())
+                .append(", ")
+                .append(userInfo.getAdress().getCity());
 
         list.clear();
-        list.add(new UserData(getString(R.string.name), userInfo.getName()));
-        list.add(new UserData(getString(R.string.surname), userInfo.getSurname()));
-        list.add(new UserData(getString(R.string.city), userInfo.getCity()));
+        list.add(new UserData(getString(R.string.name), userInfo.getName(), new NameChangeFragment()));
+        list.add(new UserData(getString(R.string.surname), userInfo.getSurname(), new SurnameChangeFragment()));
+        list.add(new UserData(getString(R.string.phone), userInfo.getPhone(), new PhoneChangeFragment()));
+        list.add(new UserData(getString(R.string.email), auth.getCurrentUser().getEmail(), new EmailChangeFragment()));
+        list.add(new UserData(getString(R.string.password), "**************", new PasswordChangeFragment()));
+        list.add(new UserData(getString(R.string.card), "***********" + userInfo.getCard().getCreditCardNumber().substring(11, 16), new CardChangedFragment()));
+        list.add(new UserData(getString(R.string.adress), adressStringBuilder.toString(), new AdressChangedFragment()));
         showRecycleView();
         hideProgressBar();
 
@@ -179,6 +202,12 @@ public class MyAccountFragment extends Fragment {
         ((MapsActivity) getActivity()).showPlaceAutoCompletePickUpFragment();
     }
 
+    public void swapFragment(int position) {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.flContent, list.get(position).getFragment())
+                .addToBackStack(null)
+                .commit();
+    }
 
     public interface MyAccountFragmentCallback extends MapsInterface {
 

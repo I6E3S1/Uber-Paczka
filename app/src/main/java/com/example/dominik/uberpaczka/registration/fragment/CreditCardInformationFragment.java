@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.dominik.uberpaczka.R;
 import com.example.dominik.uberpaczka.registration.RegistrationActivity;
@@ -35,6 +36,7 @@ public class CreditCardInformationFragment extends Fragment implements Validable
     private TextInputLayout creditCardLayout;
     private TextInputLayout ccvLayout;
     private UserInfo userInfo;
+    private TextView headerView;
 
 
     @Nullable
@@ -43,11 +45,17 @@ public class CreditCardInformationFragment extends Fragment implements Validable
 
         View view = inflater.inflate(R.layout.fragment_creditcard_info, container, false);
 
-        userInfo=(UserInfo)getArguments().getSerializable("user_info");
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+
+            userInfo = (UserInfo) bundle.getSerializable("user_info");
+        }
+
 
         nextButton=view.findViewById(R.id.button_next_detail2);
         creditCardLayout=view.findViewById(R.id.cardnumber_textinput_layout);
         ccvLayout=view.findViewById(R.id.ccv_textinput_layout);
+        headerView = view.findViewById(R.id.createAcoount3);
 
 
         createValidationPatterns();
@@ -96,8 +104,25 @@ public class CreditCardInformationFragment extends Fragment implements Validable
     public void setInformation() throws Exception {
         if (userInfo == null) return;
 
-        userInfo.setCreditCardNumber(creditCardLayout.getEditText().getText().toString());
-        userInfo.setCcv(ccvLayout.getEditText().getText().toString());
+        userInfo.getCard().setCreditCardNumber(creditCardLayout.getEditText().getText().toString());
+        userInfo.getCard().setCcv(ccvLayout.getEditText().getText().toString());
 
+    }
+
+
+    public Button getNextButton() {
+        return nextButton;
+    }
+
+    public TextInputLayout getCreditCardLayout() {
+        return creditCardLayout;
+    }
+
+    public TextInputLayout getCcvLayout() {
+        return ccvLayout;
+    }
+
+    public TextView getHeaderView() {
+        return headerView;
     }
 }

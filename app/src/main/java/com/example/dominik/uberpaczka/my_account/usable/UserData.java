@@ -1,5 +1,7 @@
 package com.example.dominik.uberpaczka.my_account.usable;
 
+import android.support.v4.app.Fragment;
+
 /**
  * Created by marek on 06.01.2019.
  */
@@ -8,6 +10,7 @@ public class UserData {
 
     String description;
     String value;
+    Fragment fragment;
 
 
     public UserData(String description, String value) {
@@ -15,6 +18,12 @@ public class UserData {
         this.value = value;
     }
 
+
+    public UserData(String description, String value, Fragment fragment) {
+        this.description = description;
+        this.value = value;
+        this.fragment = fragment;
+    }
 
     public String getDescription() {
         return description;
@@ -30,5 +39,9 @@ public class UserData {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Fragment getFragment() {
+        return fragment;
     }
 }
