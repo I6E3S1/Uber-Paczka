@@ -101,4 +101,13 @@
 
     <string name="to">do</string>
 
+    <!--driver panel -->
+    <string name="register_driver_header">Rejestracja kierowcy</string>
+    <string name="become_driver">Zostań Kierowcą</string>
+    <string name="apply">Aplikuj</string>
+    <string name="signup_to_drive">Zarejestruj się</string>
+    <string name="common_next">Dalej</string>
+    <string name="load_driver_license_photo">Prześlij zdjęcie prawa jazdy</string>
+    <string name="partnership_agreement">Warunki</string>
+    <string name="driver_acceptance">Akceptuję warunki współpracy z UberPaczka</string>
 </resources>

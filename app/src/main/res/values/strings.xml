@@ -100,4 +100,13 @@
 
     <string name="to">to</string>
 
+    <!--driver panel -->
+    <string name="register_driver_header">Driver registration</string>
+    <string name="become_driver">Become a Driver</string>
+    <string name="apply">Apply</string>
+    <string name="signup_to_drive">Sign up to drive</string>
+    <string name="common_next">Next</string>
+    <string name="load_driver_license_photo">Upload driver license photo</string>
+    <string name="partnership_agreement">Partnership agreement</string>
+    <string name="driver_acceptance">I accept the partnership agreement with UberPaczka</string>
 </resources>

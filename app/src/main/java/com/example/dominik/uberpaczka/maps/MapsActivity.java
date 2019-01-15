@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dominik.uberpaczka.R;
+import com.example.dominik.uberpaczka.driver.DriverRegistrationActivity;
 import com.example.dominik.uberpaczka.login.LoginActivity;
 import com.example.dominik.uberpaczka.my_account.fragment.MyAccountFragment;
 import com.example.dominik.uberpaczka.my_shipment.fragment.MyShipmentFragment;
@@ -398,6 +399,9 @@ public class MapsActivity extends FragmentActivity implements
                 openFragment(fragment);
                 break;
             case R.id.nav_driver:
+                Intent driverRegistrationIntent = new Intent(getApplicationContext(), DriverRegistrationActivity.class);
+                startActivity(driverRegistrationIntent);
+                finish();
                 break;
             case R.id.nav_my_shipments:
                 fragment = new MyShipmentFragment();
