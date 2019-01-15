@@ -105,7 +105,7 @@ public class MyAccountFragment extends Fragment {
         });
 
         collapsingToolbarLayout = view.findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle("My account");
+        collapsingToolbarLayout.setTitle(getString(R.string.my_account));
         mRecyclerView = view.findViewById(R.id.collapsing_listview);
         mRecyclerView.setHasFixedSize(true);
 

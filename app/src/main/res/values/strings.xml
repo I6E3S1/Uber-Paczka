@@ -92,8 +92,12 @@
 
     <string name="order_checkout">Order</string>
 
+    <string name="package_status">Package status</string>
+
     <string name="recipient_name">Recipient name</string>
 
     <string name="recipient_phone">Recipient phone number</string>
+
+    <string name="to">to</string>
 
 </resources>

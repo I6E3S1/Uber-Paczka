@@ -31,13 +31,13 @@ public class PackageSizeFragment extends Fragment /**/ {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.imageView1:
-                    orderInfo.setSmallPackagesQuantity(orderInfo.getSmallPackagesQuantity() + 1);
+                    orderInfo.setSmallPackagesQuantity(Integer.toString(Integer.parseInt(orderInfo.getSmallPackagesQuantity()) + 1));
                     break;
                 case R.id.imageView2:
-                    orderInfo.setMediumPackagesQuantity(orderInfo.getMediumPackagesQuantity() + 1);
+                    orderInfo.setMediumPackagesQuantity(Integer.toString(Integer.parseInt(orderInfo.getMediumPackagesQuantity()) + 1));
                     break;
                 case R.id.imageView3:
-                    orderInfo.setBigPackagesQuantity(orderInfo.getBigPackagesQuantity() + 1);
+                    orderInfo.setBigPackagesQuantity(Integer.toString(Integer.parseInt(orderInfo.getBigPackagesQuantity()) + 1));
                     break;
                 default:
                     return;

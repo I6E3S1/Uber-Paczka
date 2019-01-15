@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.example.dominik.uberpaczka.R;
 import com.example.dominik.uberpaczka.login.LoginActivity;
 import com.example.dominik.uberpaczka.my_account.fragment.MyAccountFragment;
+import com.example.dominik.uberpaczka.my_shipment.fragment.MyShipmentFragment;
 import com.example.dominik.uberpaczka.order.fragments.PackageSizeFragment;
 import com.example.dominik.uberpaczka.order.usable.OrderInfo;
 import com.example.dominik.uberpaczka.utils.PermissionUtils;
@@ -394,11 +395,13 @@ public class MapsActivity extends FragmentActivity implements
                 break;
             case R.id.my_account:
                 fragment = new MyAccountFragment();
-                openAccountFragment(fragment);
+                openFragment(fragment);
                 break;
             case R.id.nav_driver:
                 break;
-            case R.id.nav_my_deliveries:
+            case R.id.nav_my_shipments:
+                fragment = new MyShipmentFragment();
+                openFragment(fragment);
                 break;
 
 
@@ -431,7 +434,7 @@ public class MapsActivity extends FragmentActivity implements
     }
 
 
-    public void openAccountFragment(Fragment fragment) {
+    public void openFragment(Fragment fragment) {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()

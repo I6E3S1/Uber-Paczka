@@ -15,9 +15,9 @@ public class OrderInfo implements Serializable {
 
     private String userID;
     private String driverID = "";
-    private Integer smallPackagesQuantity;
-    private Integer mediumPackagesQuantity;
-    private Integer bigPackagesQuantity;
+    private String smallPackagesQuantity;
+    private String mediumPackagesQuantity;
+    private String bigPackagesQuantity;
     private String from;//with ID
     private String destination;//with ID
     private String fromName;//just name
@@ -29,21 +29,21 @@ public class OrderInfo implements Serializable {
     private PackageStatus packageStatus;
 
     public OrderInfo() {
-        smallPackagesQuantity = 0;
-        mediumPackagesQuantity = 0;
-        bigPackagesQuantity = 0;
+        smallPackagesQuantity = Integer.toString(0);
+        mediumPackagesQuantity = Integer.toString(0);
+        bigPackagesQuantity = Integer.toString(0);
 
     }
 
 
     public Double multiplier(){
-        if(smallPackagesQuantity!=0) {
+        if (Integer.parseInt(smallPackagesQuantity) != 0) {
             return 0.16;
         }
-        if(mediumPackagesQuantity!=0) {
+        if (Integer.parseInt(mediumPackagesQuantity) != 0) {
             return 0.24;
         }
-        if(bigPackagesQuantity!=0) {
+        if (Integer.parseInt(bigPackagesQuantity) != 0) {
             return 0.32;
         }
         return 0.00;
@@ -56,18 +56,18 @@ public class OrderInfo implements Serializable {
         packageStatus = PackageStatus.waiting_for_driver;
 
 
-        orderInfoMap.put("user_id", userID);
-        orderInfoMap.put("driver_ID", driverID);
-        orderInfoMap.put("from_adress", fromName);
-        orderInfoMap.put("from_ID",from);
-        orderInfoMap.put("package_status", packageStatus.name());
-        orderInfoMap.put("destinatin adress", destinationName);
-        orderInfoMap.put("destination_ID",destination);
-        orderInfoMap.put("small_packages_quantity", smallPackagesQuantity.toString());
-        orderInfoMap.put("medium_packages_quantity", mediumPackagesQuantity.toString());
-        orderInfoMap.put("big_packages_quantity", bigPackagesQuantity.toString());
+        orderInfoMap.put("userID", userID);
+        orderInfoMap.put("driverID", driverID);
+        orderInfoMap.put("fromName", fromName);
+        orderInfoMap.put("from", from);
+        orderInfoMap.put("packageStatus", packageStatus.name());
+        orderInfoMap.put("destinationName", destinationName);
+        orderInfoMap.put("destination", destination);
+        orderInfoMap.put("smallPackagesQuantity", smallPackagesQuantity);
+        orderInfoMap.put("mediumPackagesQuantity", mediumPackagesQuantity);
+        orderInfoMap.put("bigPackagesQuantity", bigPackagesQuantity);
         orderInfoMap.put("recipient", recipient);
-        orderInfoMap.put("recipient_phone", recipientPhone);
+        orderInfoMap.put("recipientPhone", recipientPhone);
         orderInfoMap.put("price",price);
 
         return orderInfoMap;
@@ -94,30 +94,76 @@ public class OrderInfo implements Serializable {
     }
 
 
+    public String getUserID() {
+        return userID;
+    }
 
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 
-    public Integer getSmallPackagesQuantity() {
+    public String getDriverID() {
+        return driverID;
+    }
+
+    public void setDriverID(String driverID) {
+        this.driverID = driverID;
+    }
+
+    public String getSmallPackagesQuantity() {
         return smallPackagesQuantity;
     }
 
-    public void setSmallPackagesQuantity(Integer smallPackagesQuantity) {
+    public void setSmallPackagesQuantity(String smallPackagesQuantity) {
         this.smallPackagesQuantity = smallPackagesQuantity;
     }
 
-    public Integer getMediumPackagesQuantity() {
+    public String getMediumPackagesQuantity() {
         return mediumPackagesQuantity;
     }
 
-    public void setMediumPackagesQuantity(Integer mediumPackagesQuantity) {
+    public void setMediumPackagesQuantity(String mediumPackagesQuantity) {
         this.mediumPackagesQuantity = mediumPackagesQuantity;
     }
 
-    public Integer getBigPackagesQuantity() {
+    public String getBigPackagesQuantity() {
         return bigPackagesQuantity;
     }
 
-    public void setBigPackagesQuantity(Integer bigPackagesQuantity) {
+    public void setBigPackagesQuantity(String bigPackagesQuantity) {
         this.bigPackagesQuantity = bigPackagesQuantity;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public String getFromName() {
+        return fromName;
+    }
+
+    public void setFromName(String fromName) {
+        this.fromName = fromName;
+    }
+
+    public String getDestinationName() {
+        return destinationName;
+    }
+
+    public void setDestinationName(String destinationName) {
+        this.destinationName = destinationName;
     }
 
     public String getDate() {
@@ -144,52 +190,19 @@ public class OrderInfo implements Serializable {
         this.recipientPhone = recipientPhone;
     }
 
-
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-    public String getFromName() {
-        return fromName;
-    }
-
-    public void setFromName(String fromName) {
-        this.fromName = fromName;
-    }
-
-    public String getDestinationName() {
-        return destinationName;
-    }
-
-    public void setDestinationName(String destinationName) {
-        this.destinationName = destinationName;
-    }
-
     public String getPrice() {
         return price;
     }
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public PackageStatus getPackageStatus() {
+        return packageStatus;
+    }
+
+    public void setPackageStatus(PackageStatus packageStatus) {
+        this.packageStatus = packageStatus;
     }
 }

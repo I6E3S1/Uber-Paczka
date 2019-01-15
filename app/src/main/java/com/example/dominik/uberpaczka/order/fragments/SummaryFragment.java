@@ -32,6 +32,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
@@ -166,7 +167,7 @@ public class SummaryFragment extends Fragment implements LoaderManager.LoaderCal
     public void onLoadFinished(@NonNull Loader<Long> loader, Long aLong) {
 
         Log.i("Loader", "Finished working");
-        orderInfo.setPrice(String.valueOf(10 + orderInfo.multiplier() * Double.valueOf(aLong/1000)));
+        orderInfo.setPrice(String.valueOf(roundTwoDecimals(10 + orderInfo.multiplier() * Double.valueOf(aLong / 1000))));
         Log.i("aLong", String.valueOf(aLong));
         Log.i("multi",String.valueOf(orderInfo.multiplier()));
         updateUI(orderInfo.getPrice());//PRICE
@@ -212,5 +213,11 @@ public class SummaryFragment extends Fragment implements LoaderManager.LoaderCal
 
     public void stopLoader() {
         getLoaderManager().destroyLoader(LOADER_ID);
+    }
+
+
+    public double roundTwoDecimals(double d) {
+        DecimalFormat twoDForm = new DecimalFormat("#.##");
+        return Double.valueOf(twoDForm.format(d));
     }
 }

@@ -93,8 +93,12 @@
 
     <string name="order_checkout">Zamów</string>
 
+    <string name="package_status">Status paczki</string>
+
     <string name="recipient_name">Imie i nazwisko odbiorcy</string>
 
     <string name="recipient_phone">Numer telefonu odbiorcy</string>
+
+    <string name="to">do</string>
 
 </resources>
