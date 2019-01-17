@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/quake"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:orientation="horizontal"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
+
+    <!-- Dispalying magnitude in circle background-->
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="?android:attr/listPreferredItemHeight"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:layout_gravity="center_vertical" />
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_weight="8"
+        android:orientation="vertical"
+        android:paddingLeft="8dp">
+        <!-- Dispalying precison location of quake-->
+
+        <TextView
+            android:id="@+id/my_shipment_status_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/hintColor" />
+
+        <!-- Dispalying coutry-->
+        <TextView
+            android:id="@+id/my_shipment_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="top"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/textColor" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/price_shipment"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/textColor" />
+
+
+</LinearLayout>

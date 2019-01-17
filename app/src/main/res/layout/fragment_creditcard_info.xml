@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="@dimen/padding_fragments">
+
+
+
+    <TextView
+        android:id="@+id/createAcoount3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create_account"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/cardnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_margin"
+        android:text="@string/card_number_layout"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/textColor"
+        app:layout_constraintTop_toBottomOf="@id/createAcoount3" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/cardnumber_textinput_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top"
+        android:textColorHint="@color/hintColor"
+        app:boxBackgroundColor="@color/white"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/error_appearance"
+        app:layout_constraintTop_toBottomOf="@id/cardnumber">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/cardnumber_edittextinput_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/card"
+            android:inputType="number"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ccv_textinput_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top"
+        android:textColorHint="@color/hintColor"
+        app:boxBackgroundColor="@color/white"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/error_appearance"
+        app:layout_constraintTop_toBottomOf="@id/cardnumber_textinput_layout"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/hintColor">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/ccv_edittextinput_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ccv"
+            android:inputType="numberPassword"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_next_detail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button"
+        android:text="@string/next_layout"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ccv_textinput_layout" />
+
+</android.support.constraint.ConstraintLayout>

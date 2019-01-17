@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_ordersummary"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorAccent"
+        android:theme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <TextView
+        android:id="@+id/ordersummary_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_fragments"
+        android:layout_marginStart="@dimen/padding_fragments"
+        android:layout_marginTop="@dimen/margin_summary"
+        android:text="@string/summary"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_ordersummary" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout_route"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/order_summary_route_height"
+        android:layout_marginEnd="@dimen/padding_fragments"
+        android:layout_marginStart="@dimen/padding_fragments"
+        android:layout_marginTop="@dimen/margin_summary"
+        android:background="@android:color/transparent"
+        android:elevation="@dimen/margin_top"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/ordersummary_textview">
+
+
+        <TextView
+            android:id="@+id/pickup_textview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scrollHorizontally="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/textColor" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_chevron_right_black_56dp" />
+
+
+        <TextView
+            android:id="@+id/destination_textview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textMultiLine"
+            android:scrollHorizontally="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/textColor" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/price_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_fragments"
+        android:layout_marginStart="@dimen/padding_fragments"
+        android:layout_marginTop="@dimen/margin_top"
+        android:text="@string/price"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/textColor"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout_route" />
+
+    <TextView
+
+        android:id="@+id/amount_price_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_fragments"
+        android:layout_marginStart="@dimen/padding_fragments"
+        android:layout_marginTop="@dimen/margin_top"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/textColor"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout_route" />
+
+    <View
+        android:id="@+id/devider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="@dimen/padding_fragments"
+        android:layout_marginStart="@dimen/padding_fragments"
+        android:layout_marginTop="@dimen/margin_top"
+        android:background="@color/light_grey"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/price_textview" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textinput_receipient_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_fragments"
+        android:layout_marginStart="@dimen/padding_fragments"
+        android:layout_marginTop="@dimen/margin_top"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/hintColor"
+        app:boxBackgroundColor="@color/white"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/error_appearance"
+        app:layout_constraintTop_toBottomOf="@id/devider">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/recipient_name"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textinput_receipient_phone_number"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_fragments"
+        android:layout_marginStart="@dimen/padding_fragments"
+        android:layout_marginTop="@dimen/margin_top"
+        android:textColorHint="@color/hintColor"
+        app:boxBackgroundColor="@color/white"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/error_appearance"
+        app:layout_constraintTop_toBottomOf="@id/textinput_receipient_name">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/recipient_phone"
+            android:inputType="phone"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor" />
+    </android.support.design.widget.TextInputLayout>
+
+    <View
+        android:id="@+id/devider1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="@dimen/padding_fragments"
+        android:layout_marginStart="@dimen/padding_fragments"
+        android:layout_marginTop="@dimen/margin_top"
+        android:background="@color/light_grey"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textinput_receipient_phone_number" />
+
+
+    <Button
+        android:id="@+id/acceptance_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_fragments"
+        android:layout_marginStart="@dimen/padding_fragments"
+        android:layout_marginTop="@dimen/margin_top"
+        android:background="@color/colorAccent"
+        android:text="@string/order_checkout"
+        android:textColor="@color/textColor"
+        app:layout_constraintTop_toBottomOf="@id/devider1" />
+
+
+</android.support.constraint.ConstraintLayout>

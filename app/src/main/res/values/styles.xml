@@ -6,11 +6,23 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlNormal">@color/colorPrimaryDark</item>
-        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
         <item name="colorControlHighlight">@color/colorPrimaryDark</item>
     </style>
 
 
+    <style name="error_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/error_color</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="expanded_text_appearance" parent="@android:style/TextAppearance.Large">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="collapsed_text_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
 
 </resources>

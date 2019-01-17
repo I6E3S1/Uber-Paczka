@@ -1,0 +1,113 @@
+<resources>
+    <string name="app_name">UberPaczka</string>
+    <string name="email">E-mail</string>
+    <string name="password">Haslo</string>
+    <string name="repeat_password">Powtorz haslo</string>
+    <string name="log">Zaloguj</string>
+    <string name="rej">Nie masz jeszcze konta? Zarejestruj się</string>
+    <string name="name">Imie</string>
+    <string name="surname">Nazwisko</string>
+    <string name="date">Data urodzenia</string>
+    <string name="phone">Nr. Telefonu</string>
+    <string name="card">Nr. Karty</string>
+    <string name="ccv">Nr. CCV</string>
+    <string name="street">Ulica</string>
+    <string name="flat">Nr.</string>
+    <string name="city">Miasto</string>
+    <string name="registernew">Zarejestruj</string>
+    <string name="logo">Logo</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="adress">Adres</string>
+    <string name="driver">Driver panel</string>
+    <string name="old_password">Stare hasło</string>
+    <string name="new_email">Nowy email</string>
+
+    <!--every below strings were used in fragment summary for displaying string -->
+    <string name="summary">Podsumowanie</string>
+    <string name="destination">Destynacja</string>
+    <string name="from">Skad</string>
+    <string name="price">Cena</string>
+    <string name="package_size_small">Mala</string>
+    <string name="package_size_medium">Srednia</string>
+    <string name="package_size_grande">Duza</string>
+    <string name="choose_size">Wybierz rozmiar paczki</string>
+    <string name="accept">Potwierdzam</string>
+
+
+    <!--error messages-->
+    <string name="error_name">Nieprawidlowe dane</string>
+    <string name="error_surname">Nieprawidlowe dane</string>
+    <string name="error_date">Nieprawidlowy format daty</string>
+    <string name="error_phone_number">Nieprawidlowy numer telefonu</string>
+    <string name="error_email">Nieprawidłowy email</string>
+    <string name="error_card_number">Nieprawidlowy numer karty</string>
+    <string name="error_ccv">Nieprawidlowy kod bezpieczenstwa karty</string>
+    <string name="error_street">Nieprawidlowa nazwa ulicy</string>
+    <string name="error_flat">Nieprawidlowy numer domu</string>
+    <string name="error_city">Nieprawidlowa nazwa miasta</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="error_blank">Pole nie może być puste</string>
+    <string name="error_password">Niepoprawny format hasła</string>
+    <string name="error_repeat_password">Hasla nie są takie same. Spróbuj ponownie</string>
+    <string name="confirm_password">Potwierdź hasło</string>
+    <string name="error_terms_checkbox">Należy zaapkceptować warunki umowy</string>
+
+
+    <!-- registration strings-->
+
+    <!-- first fragment -->
+    <string name="create_account">Utworz konto</string>
+    <string name="basic_inforamtion_layout">Podaj podstawowe informacje</string>
+    <string name="adrress_layout">Podaj adres zamieszkania</string>
+    <string name="card_number_layout">Podaj numer karty kredytowej</string>
+    <string name="username_password_layout">Podaj email i hasło</string>
+    <string name="privacy_terms">Zasady korzystania</string>
+    <string name="next_layout">Dalej</string>
+    <string name="on_registration_fail">Rejestracja nie powiodła sie</string>
+    <string name="check_internet_connection">Sprawdź połączenie z internetem</string>
+    <string name="understand_no_internet_connection">Zrozumiałem</string>
+    <string name="password_change_layout">Wprowadz nowe hasło</string>
+    <string name="update_account">Zaktualizuj konto</string>
+    <string name="name_change_layout">Wprowadz imie</string>
+    <string name="surname_change_layout">Wprowadz nazwisko</string>
+    <string name="phone_change_layout">Wprowadz nowy numer telefonu</string>
+    <string name="email_change_layout">Wprowadz adres email</string>
+
+
+    <string name="privacy_acceptance">Akceptuje warunki korzystania z usługi oferowane przez UberPaczka</string>
+
+
+    <!--item for navigation drawer-->
+    <string name="log_out">Wyloguj</string>
+    <string name="my_account">Moje konto</string>
+    <string name="driver_panel">Zarabiaj jezdżąc</string>
+    <string name="my_shipment">Moje przesyłki</string>
+
+
+    <string name="hint_place_autocompletefragment_from">Miejsce podjęcia paczki</string>
+    <string name="hint_place_autocompletefragment_destination">Miejsce docelowe</string>
+    <string name="error_loading_user_data">Nie można załadować danych</string>
+
+
+    <string name="mail_navigation_header">E-mail</string>
+
+    <string name="order_checkout">Zamów</string>
+
+    <string name="package_status">Status paczki</string>
+
+    <string name="recipient_name">Imie i nazwisko odbiorcy</string>
+
+    <string name="recipient_phone">Numer telefonu odbiorcy</string>
+
+    <string name="to">do</string>
+
+    <!--driver panel -->
+    <string name="register_driver_header">Rejestracja kierowcy</string>
+    <string name="become_driver">Zostań Kierowcą</string>
+    <string name="apply">Aplikuj</string>
+    <string name="signup_to_drive">Zarejestruj się</string>
+    <string name="common_next">Dalej</string>
+    <string name="load_driver_license_photo">Prześlij zdjęcie prawa jazdy</string>
+    <string name="partnership_agreement">Warunki</string>
+    <string name="driver_acceptance">Akceptuję warunki współpracy z UberPaczka</string>
+</resources>

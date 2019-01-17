@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:stateListAnimator="@drawable/appbar_elevation"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            app:collapsedTitleTextAppearance="@style/collapsed_text_appearance"
+            app:contentScrim="?attr/colorAccent"
+            app:expandedTitleGravity="bottom|left"
+            app:expandedTitleMarginEnd="48dp"
+            app:expandedTitleMarginStart="32dp"
+            app:expandedTitleTextAppearance="@style/expanded_text_appearance"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/collapsing_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ProgressBar
+            android:id="@+id/myaccount_progressbar"
+            android:layout_width="@dimen/myaccount_fragment_progressbar"
+            android:layout_height="@dimen/myaccount_fragment_progressbar"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/error_data_loading_textview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/error_loading_user_data"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/hintColor"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

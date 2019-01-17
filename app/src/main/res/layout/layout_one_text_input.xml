@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/textColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/subheader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/top_margin"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/textColor"
+        app:layout_constraintTop_toBottomOf="@id/header" />
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textinput_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_top"
+        android:textColorHint="@color/hintColor"
+        app:boxBackgroundColor="@color/white"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/error_appearance"
+        app:layout_constraintTop_toBottomOf="@id/subheader">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/edittextinput_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor" />
+
+    </android.support.design.widget.TextInputLayout>
+
+</android.support.constraint.ConstraintLayout>

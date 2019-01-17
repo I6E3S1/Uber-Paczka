@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--used in fragment summary to make card view circular-->
+    <dimen name="package_size">96dp</dimen>
+    <!--radius package size needs to be half of package size-->
+    <dimen name="radius_package_size">48dp</dimen>
+    <!--left and right margin for fragment_summary_layout-->
+    <dimen name="margin_summary">8dp</dimen>
+
+    <dimen name="margin_top">8dp</dimen>
+
+    <dimen name="left_mavigation_header_margin">8dp</dimen>
+
+    <!--registration fragment-->
+    <dimen name="padding_fragments">24dp</dimen>
+    <dimen name="top_margin">16dp</dimen>
+    <dimen name="padding_botton">32dp</dimen>
+    <dimen name="padding_textinput_layout">2dp</dimen>
+
+    <dimen name="place_autocompletefragment_margin">-32dp</dimen>
+
+    <dimen name="text_input_layout_radius">5dp</dimen>
+
+    <!--in confirmation fragment-->
+    <dimen name="paddig_left_registration_checkbox">16dp</dimen>
+
+    <dimen name="confiramtion_layout_progressbar">72dp</dimen>
+
+    <dimen name="myaccount_fragment_progressbar">36dp</dimen>
+
+    <dimen name="place_autocompleteview_fragment_elevation">12dp</dimen>
+
+
+    <dimen name="shrine_toolbar_image_offset_top">48dp</dimen>
+    <dimen name="shrine_toolbar_offset_top">268dp</dimen>
+
+
+    <dimen name="order_summary_route_height">150dp</dimen>
+</resources>
