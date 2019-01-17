@@ -2,6 +2,7 @@ package com.example.dominik.uberpaczka.registration.usable;
 
 import com.example.dominik.uberpaczka.utils.UsernameFirestore;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import java.util.Map;
  * Created by marek on 12.01.2019.
  */
 
-public class CardInfo {
+public class CardInfo implements Serializable {
 
 
     private String creditCardNumber;

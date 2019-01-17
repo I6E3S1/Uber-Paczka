@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dominik.uberpaczka.R;
-import com.example.dominik.uberpaczka.driver.DriverRegistrationActivity;
+import com.example.dominik.uberpaczka.driver.registration.DriverRegistrationActivity;
 import com.example.dominik.uberpaczka.login.LoginActivity;
 import com.example.dominik.uberpaczka.my_account.fragment.MyAccountFragment;
 import com.example.dominik.uberpaczka.my_shipment.fragment.MyShipmentFragment;

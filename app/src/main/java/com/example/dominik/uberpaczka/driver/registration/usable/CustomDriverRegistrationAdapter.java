@@ -1,13 +1,13 @@
-package com.example.dominik.uberpaczka.driver.usable;
+package com.example.dominik.uberpaczka.driver.registration.usable;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.dominik.uberpaczka.driver.fragment.ConfirmationFragment;
-import com.example.dominik.uberpaczka.driver.fragment.IntroFragment;
-import com.example.dominik.uberpaczka.driver.fragment.LicenseFragment;
+import com.example.dominik.uberpaczka.driver.registration.fragment.ConfirmationFragment;
+import com.example.dominik.uberpaczka.driver.registration.fragment.IntroFragment;
+import com.example.dominik.uberpaczka.driver.registration.fragment.LicenseFragment;
 
 /**
  * Created by snadev on 10.01.2019.

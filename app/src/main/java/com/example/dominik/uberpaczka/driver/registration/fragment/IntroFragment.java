@@ -1,4 +1,4 @@
-package com.example.dominik.uberpaczka.driver.fragment;
+package com.example.dominik.uberpaczka.driver.registration.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.dominik.uberpaczka.R;
-import com.example.dominik.uberpaczka.driver.DriverRegistrationActivity;
+import com.example.dominik.uberpaczka.driver.registration.DriverRegistrationActivity;
 import com.example.dominik.uberpaczka.utils.Editable;
 
 /**

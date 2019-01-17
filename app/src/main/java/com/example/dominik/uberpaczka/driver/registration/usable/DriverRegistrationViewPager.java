@@ -1,4 +1,4 @@
-package com.example.dominik.uberpaczka.driver.usable;
+package com.example.dominik.uberpaczka.driver.registration.usable;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

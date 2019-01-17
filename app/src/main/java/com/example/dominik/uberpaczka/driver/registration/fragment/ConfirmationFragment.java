@@ -1,4 +1,4 @@
-package com.example.dominik.uberpaczka.driver.fragment;
+package com.example.dominik.uberpaczka.driver.registration.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,11 +11,18 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.dominik.uberpaczka.R;
 import com.example.dominik.uberpaczka.maps.MapsActivity;
 import com.example.dominik.uberpaczka.utils.Checker;
+import com.example.dominik.uberpaczka.utils.UsernameFirestore;
 import com.example.dominik.uberpaczka.validators_patterns.Validable;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * Created by snadev on 10.01.2019.
@@ -44,7 +51,7 @@ public class ConfirmationFragment extends Fragment implements Validable {
             public void onClick(View v) {
                 if (validate()) {
                     if (Checker.checkInternetConnection(getContext(), getFragmentManager())) {
-                        applyUser();
+                        setDriverAccount();
                         changeVisibilityDuringRegistration();
                     }
                 }
@@ -54,16 +61,28 @@ public class ConfirmationFragment extends Fragment implements Validable {
         return view;
     }
 
+    public void setDriverAccount() {
+        DocumentReference driverAccount = FirebaseFirestore.getInstance().collection("users")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        driverAccount.update(UsernameFirestore.driverAccount.name(), true)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getContext(), "Zostałeś kierowcą!",
+                                Toast.LENGTH_LONG).show();
 
-    public void applyUser() {
-        //TODO
-        android.content.Intent myIntent = new android.content.Intent(getView().getRootView().getContext(), MapsActivity.class);
-        startActivity(myIntent);
-    }
-
-    public void setUserDriver() {
-        //TODO
-        //FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        android.content.Intent myIntent = new android.content.Intent(getView().getRootView().getContext(), MapsActivity.class);
+                        startActivity(myIntent);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        changeVisibilityOnRegistrationFail();
+                        Toast.makeText(getContext(), "Błąd aktualizacji danych",
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
     @Override

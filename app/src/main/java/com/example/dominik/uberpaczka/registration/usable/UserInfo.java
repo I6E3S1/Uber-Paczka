@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class UserInfo implements Serializable {
 
-
     private String password;
     private String email;
     private String userID;
@@ -19,6 +18,7 @@ public class UserInfo implements Serializable {
     private String phone;
     private AdressInfo adress;
     private CardInfo card;
+    private Boolean driverAccount;
 
 
     public UserInfo() {
@@ -44,6 +44,8 @@ public class UserInfo implements Serializable {
         userInfoMap.put(UsernameFirestore.adress.name(), adress.getAdressMap());
 
         userInfoMap.put(UsernameFirestore.card.name(), card.getCardInfoMap());
+
+        userInfoMap.put(UsernameFirestore.driverAccount.name(), driverAccount);
 
 
         return userInfoMap;
@@ -114,7 +116,13 @@ public class UserInfo implements Serializable {
         return card;
     }
 
+    public Boolean getDriverAccount() {
+        return driverAccount;
+    }
 
+    public void setDriverAccount(Boolean driverAccount) {
+        this.driverAccount = driverAccount;
+    }
 }
 
 

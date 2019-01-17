@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".driver.DriverRegistrationActivity">
+    tools:context=".driver.registration.DriverRegistrationActivity">
 
 
-    <com.example.dominik.uberpaczka.driver.usable.DriverRegistrationViewPager
+    <com.example.dominik.uberpaczka.driver.registration.usable.DriverRegistrationViewPager
         android:id="@+id/driver_registration_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

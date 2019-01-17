@@ -1,4 +1,4 @@
-package com.example.dominik.uberpaczka.driver.fragment;
+package com.example.dominik.uberpaczka.driver.registration.fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -22,7 +22,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.dominik.uberpaczka.R;
-import com.example.dominik.uberpaczka.driver.DriverRegistrationActivity;
+import com.example.dominik.uberpaczka.driver.registration.DriverRegistrationActivity;
 import com.example.dominik.uberpaczka.utils.Editable;
 import com.example.dominik.uberpaczka.validators_patterns.Validable;
 
@@ -124,6 +124,7 @@ public class LicenseFragment extends Fragment implements Editable, Validable {
         } else if (requestCode == CAMERA) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             licensePreview.setImageBitmap(thumbnail);
+            uploaded = true;
             saveImage(thumbnail);
             Toast.makeText(getActivity(), "Image Saved!", Toast.LENGTH_SHORT).show();
         }

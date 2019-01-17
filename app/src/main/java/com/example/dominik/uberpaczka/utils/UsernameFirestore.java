@@ -8,7 +8,7 @@ public enum UsernameFirestore {
 
 
     adress, card, name, surname, phone, mail, ccv, userID, date, creditCardNumber,
-    street, flat, city
+    street, flat, city, driverAccount
 
 
 }

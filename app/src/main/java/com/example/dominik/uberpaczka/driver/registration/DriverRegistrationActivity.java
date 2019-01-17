@@ -1,11 +1,11 @@
-package com.example.dominik.uberpaczka.driver;
+package com.example.dominik.uberpaczka.driver.registration;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.dominik.uberpaczka.R;
-import com.example.dominik.uberpaczka.driver.usable.CustomDriverRegistrationAdapter;
-import com.example.dominik.uberpaczka.driver.usable.DriverRegistrationViewPager;
+import com.example.dominik.uberpaczka.driver.registration.usable.CustomDriverRegistrationAdapter;
+import com.example.dominik.uberpaczka.driver.registration.usable.DriverRegistrationViewPager;
 
 
 public class DriverRegistrationActivity extends AppCompatActivity {
