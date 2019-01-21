@@ -27,12 +27,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dominik.uberpaczka.R;
+import com.example.dominik.uberpaczka.driver.orders.fragment.DriverOrdersFragment;
 import com.example.dominik.uberpaczka.driver.registration.DriverRegistrationActivity;
 import com.example.dominik.uberpaczka.login.LoginActivity;
 import com.example.dominik.uberpaczka.my_account.fragment.MyAccountFragment;
 import com.example.dominik.uberpaczka.my_shipment.fragment.MyShipmentFragment;
 import com.example.dominik.uberpaczka.order.fragments.PackageSizeFragment;
 import com.example.dominik.uberpaczka.order.usable.OrderInfo;
+import com.example.dominik.uberpaczka.registration.usable.UserInfo;
 import com.example.dominik.uberpaczka.utils.PermissionUtils;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
@@ -46,8 +48,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -76,6 +85,7 @@ public class MapsActivity extends FragmentActivity implements
     private String TAG = "MAPS";
     private HashMap<String, String> locationHashMap = new HashMap<>();
     private OrderInfo orderInfo = new OrderInfo();
+    private UserInfo userInfo;
 
 
     private View.OnClickListener navigationListener = new View.OnClickListener() {
@@ -128,6 +138,7 @@ public class MapsActivity extends FragmentActivity implements
         }
 
 
+        loadUserInfo();
         initUpNavigationDrawer();
         initAutoCompleteFragments();
         initOnSelectedListener();
@@ -353,7 +364,6 @@ public class MapsActivity extends FragmentActivity implements
      */
     public void initUpNavigationDrawer() {
 
-
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -399,9 +409,16 @@ public class MapsActivity extends FragmentActivity implements
                 openFragment(fragment);
                 break;
             case R.id.nav_driver:
-                Intent driverRegistrationIntent = new Intent(getApplicationContext(), DriverRegistrationActivity.class);
-                startActivity(driverRegistrationIntent);
-                finish();
+
+                if (userInfo.getDriverAccount()) {
+                    fragment = new DriverOrdersFragment();
+                    openFragment(fragment);
+                } else {
+                    Intent driverRegistrationIntent = new Intent(getApplicationContext(), DriverRegistrationActivity.class);
+                    startActivity(driverRegistrationIntent);
+                    finish();
+                }
+
                 break;
             case R.id.nav_my_shipments:
                 fragment = new MyShipmentFragment();
@@ -410,7 +427,6 @@ public class MapsActivity extends FragmentActivity implements
 
 
         }
-
 
     }
 
@@ -524,6 +540,36 @@ public class MapsActivity extends FragmentActivity implements
         } else {
             super.onBackPressed();
         }
+    }
+
+
+
+    private void loadUserInfo() {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        if (user == null) return;
+
+        DocumentReference docRef = db.collection("users").document(user.getUid());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        userInfo = document.toObject(UserInfo.class);
+
+                        Log.d(TAG, userInfo.getName());
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
     }
 
 

@@ -65,10 +65,12 @@ public class LicenseFragment extends Fragment implements Editable, Validable {
 
     private void showPictureDialog(){
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(getActivity());
-        pictureDialog.setTitle("Select Action");
+
+        pictureDialog.setTitle(getString(R.string.add_photo));
         String[] pictureDialogItems = {
-                "Select photo from gallery",
-                "Capture photo from camera" };
+                getString(R.string.select_photo_from_gallery),
+                getString(R.string.capture_photo_from_camera) };
+      
         pictureDialog.setItems(pictureDialogItems,
                 new DialogInterface.OnClickListener() {
                     @Override
