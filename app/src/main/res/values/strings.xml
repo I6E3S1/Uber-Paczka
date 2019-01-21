@@ -109,8 +109,10 @@
     <string name="load_driver_license_photo">Upload driver license photo</string>
     <string name="partnership_agreement">Partnership agreement</string>
     <string name="driver_acceptance">I accept the partnership agreement with UberPaczka</string>
+
     <string name="driver_orders">Driver panel</string>
     <string name="add_photo">Add photo</string>
     <string name="select_photo_from_gallery">Select photo from gallery</string>
     <string name="capture_photo_from_camera">Capture photo from camera</string>
+
 </resources>

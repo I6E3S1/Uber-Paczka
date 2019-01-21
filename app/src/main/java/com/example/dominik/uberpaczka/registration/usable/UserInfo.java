@@ -21,6 +21,7 @@ public class UserInfo implements Serializable {
     private Boolean driverAccount = false;
 
 
+
     public UserInfo() {
         adress = new AdressInfo();
         card = new CardInfo();

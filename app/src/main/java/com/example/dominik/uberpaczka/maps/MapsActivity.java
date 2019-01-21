@@ -48,6 +48,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -55,6 +56,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -135,10 +137,12 @@ public class MapsActivity extends FragmentActivity implements
             rlp.setMargins(0, 0, 48, 48);
         }
 
+
         loadUserInfo();
         initUpNavigationDrawer();
         initAutoCompleteFragments();
         initOnSelectedListener();
+
     }
 
 
@@ -359,6 +363,7 @@ public class MapsActivity extends FragmentActivity implements
      * setting a listner for naigation item click
      */
     public void initUpNavigationDrawer() {
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -404,6 +409,7 @@ public class MapsActivity extends FragmentActivity implements
                 openFragment(fragment);
                 break;
             case R.id.nav_driver:
+
                 if (userInfo.getDriverAccount()) {
                     fragment = new DriverOrdersFragment();
                     openFragment(fragment);
@@ -412,6 +418,7 @@ public class MapsActivity extends FragmentActivity implements
                     startActivity(driverRegistrationIntent);
                     finish();
                 }
+
                 break;
             case R.id.nav_my_shipments:
                 fragment = new MyShipmentFragment();
@@ -420,7 +427,9 @@ public class MapsActivity extends FragmentActivity implements
 
 
         }
+
     }
+
 
     /**
      * dynamically open summary fragment after picking destination from destination fragment
@@ -534,6 +543,7 @@ public class MapsActivity extends FragmentActivity implements
     }
 
 
+
     private void loadUserInfo() {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -561,5 +571,6 @@ public class MapsActivity extends FragmentActivity implements
             }
         });
     }
+
 
 }
