@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.example.dominik.uberpaczka.R;
 import com.example.dominik.uberpaczka.utils.UsernameFirestore;
 import com.example.dominik.uberpaczka.validators_patterns.NameValidator;
+import com.example.dominik.uberpaczka.validators_patterns.PhoneValidator;
 
 /**
  * Created by marek on 13.01.2019.
@@ -24,7 +25,7 @@ public class PhoneChangeFragment extends DataFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         setNameFirestore(UsernameFirestore.phone);
-        setValidator(new NameValidator(getTextInputLayout(), getString(R.string.error_phone_number), getString(R.string.error_blank)));
+        setValidator(new PhoneValidator(getTextInputLayout(), getString(R.string.error_phone_number), getString(R.string.error_blank)));
         setSubheaderText(getString(R.string.phone_change_layout));
         getTextInputLayout().getEditText().setHint(getString(R.string.phone));
         getTextInputLayout().getEditText().setInputType(InputType.TYPE_CLASS_PHONE);

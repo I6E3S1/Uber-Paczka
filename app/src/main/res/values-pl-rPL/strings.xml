@@ -110,4 +110,8 @@
     <string name="load_driver_license_photo">Prześlij zdjęcie prawa jazdy</string>
     <string name="partnership_agreement">Warunki</string>
     <string name="driver_acceptance">Akceptuję warunki współpracy z UberPaczka</string>
+    <string name="driver_orders">Panel kierowcy</string>
+    <string name="add_photo">Dodaj zdjęcie</string>
+    <string name="select_photo_from_gallery">Wybierz z galerii</string>
+    <string name="capture_photo_from_camera">Wykonaj zdjęcie aparatem</string>
 </resources>

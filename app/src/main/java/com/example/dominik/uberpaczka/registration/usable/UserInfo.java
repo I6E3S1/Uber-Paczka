@@ -18,7 +18,7 @@ public class UserInfo implements Serializable {
     private String phone;
     private AdressInfo adress;
     private CardInfo card;
-    private Boolean driverAccount;
+    private Boolean driverAccount = false;
 
 
     public UserInfo() {
