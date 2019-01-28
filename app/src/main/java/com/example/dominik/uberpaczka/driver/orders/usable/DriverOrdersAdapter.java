@@ -13,7 +13,11 @@ import com.example.dominik.uberpaczka.R;
 import com.example.dominik.uberpaczka.my_account.usable.CustomClickListener;
 import com.example.dominik.uberpaczka.order.usable.OrderInfo;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by snadev on 17.01.2019.
@@ -34,14 +38,14 @@ public class DriverOrdersAdapter extends RecyclerView.Adapter<DriverOrdersAdapte
         this.to = to;
     }
 
-    public void add(OrderInfo s,int position) {
-        position = position == -1 ? getItemCount()  : position;
-        orderList.add(position,s);
+    public void add(OrderInfo s, int position) {
+        position = position == -1 ? getItemCount() : position;
+        orderList.add(position, s);
         notifyItemInserted(position);
     }
 
-    public void remove(int position){
-        if (position < getItemCount()  ) {
+    public void remove(int position) {
+        if (position < getItemCount()) {
             orderList.remove(position);
             notifyItemRemoved(position);
         }
@@ -75,9 +79,25 @@ public class DriverOrdersAdapter extends RecyclerView.Adapter<DriverOrdersAdapte
 
         holder.iconImageView.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_delivery_icon));
         holder.value.setText(stringBuilder.toString());
-        holder.statusValueTextView.setText(orderInfo.getPackageStatus().toString());
-        holder.priceTextView.setText(orderInfo.getPrice());
+        holder.priceTextView.setText(getPriceForDriver(orderInfo.getPrice()));
 
+        switch (orderInfo.getPackageStatus()) {
+            case driver_is_coming:
+                holder.statusValueTextView.setText(mContext.getString(R.string.driver_is_coming));
+                break;
+            case package_delivered:
+                holder.statusValueTextView.setText(mContext.getString(R.string.package_delivered));
+                break;
+            case package_on_the_way:
+                holder.statusValueTextView.setText(mContext.getString(R.string.package_on_the_way));
+                break;
+            case waiting_for_driver:
+                holder.statusValueTextView.setText(mContext.getString(R.string.waiting_for_driver));
+                break;
+            default:
+                holder.statusValueTextView.setText(mContext.getString(R.string.unknown_package_status));
+                break;
+        }
     }
 
     @Override
@@ -101,6 +121,19 @@ public class DriverOrdersAdapter extends RecyclerView.Adapter<DriverOrdersAdapte
             priceTextView = view.findViewById(R.id.price_shipment);
         }
 
+    }
+
+    private String getPriceForDriver(String price) {
+        DecimalFormat twoDForm = new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.US));
+
+        Double priceForDriver = null;
+        try {
+            priceForDriver = twoDForm.parse(price).doubleValue() * 0.8;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return twoDForm.format(priceForDriver);
     }
 }
 

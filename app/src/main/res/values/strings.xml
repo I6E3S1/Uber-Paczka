@@ -114,5 +114,15 @@
     <string name="add_photo">Add photo</string>
     <string name="select_photo_from_gallery">Select photo from gallery</string>
     <string name="capture_photo_from_camera">Capture photo from camera</string>
+    <string name="common_updated_successfully">Updated successfully</string>
+    <string name="common_error_updating">Error updating</string>
+    <string name="waiting_for_driver">Waiting for driver</string>
+    <string name="driver_is_coming">Driver is coming</string>
+    <string name="package_delivered">Package delivered</string>
+    <string name="package_on_the_way">Package on the way</string>
+    <string name="unknown_package_status">Unknown status</string>
+    <string name="change_package_status">Change package status</string>
+    <string name="available_orders">Available orders</string>
+    <string name="accepted_orders">Accepted orders</string>
 
 </resources>

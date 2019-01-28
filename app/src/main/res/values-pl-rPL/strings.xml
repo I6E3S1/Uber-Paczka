@@ -114,5 +114,14 @@
     <string name="add_photo">Dodaj zdjęcie</string>
     <string name="select_photo_from_gallery">Wybierz z galerii</string>
     <string name="capture_photo_from_camera">Wykonaj zdjęcie aparatem</string>
-
+    <string name="common_updated_successfully">Zaktualizowano pomyślnie</string>
+    <string name="common_error_updating">Błąd podczas aktualizacji</string>
+    <string name="waiting_for_driver">Oczekiwanie na kierowcę</string>
+    <string name="driver_is_coming">Kierowca w drodze</string>
+    <string name="package_delivered">Paczka dostarczona</string>
+    <string name="package_on_the_way">Paczka w drodze</string>
+    <string name="unknown_package_status">Nieznany status</string>
+    <string name="change_package_status">Zmień status paczki</string>
+    <string name="available_orders">Dostępne zlecenia</string>
+    <string name="accepted_orders">Przyjęte zlecenia</string>
 </resources>

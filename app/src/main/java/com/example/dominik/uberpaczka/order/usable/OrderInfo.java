@@ -1,5 +1,7 @@
 package com.example.dominik.uberpaczka.order.usable;
 
+import com.google.firebase.firestore.Exclude;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +13,8 @@ import java.util.Objects;
 
 public class OrderInfo implements Serializable {
 
-
-
+    @Exclude
+    private String id;
     private String userID;
     private String driverID = "";
     private String smallPackagesQuantity;
@@ -26,7 +28,8 @@ public class OrderInfo implements Serializable {
     private String recipient;
     private String recipientPhone;
     private String price;
-    private PackageStatus packageStatus;
+    private PackageStatus packageStatus = PackageStatus.waiting_for_driver;
+
 
     public OrderInfo() {
         smallPackagesQuantity = Integer.toString(0);
@@ -53,8 +56,6 @@ public class OrderInfo implements Serializable {
 
     public Map<String, String> getOrderInfoMap() {
         Map<String, String> orderInfoMap = new HashMap<>();
-        packageStatus = PackageStatus.waiting_for_driver;
-
 
         orderInfoMap.put("userID", userID);
         orderInfoMap.put("driverID", driverID);
@@ -93,6 +94,13 @@ public class OrderInfo implements Serializable {
                 Objects.equals(getPrice(), orderInfo.getPrice());
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUserID() {
         return userID;
@@ -204,5 +212,26 @@ public class OrderInfo implements Serializable {
 
     public void setPackageStatus(PackageStatus packageStatus) {
         this.packageStatus = packageStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderInfo{" +
+                "id='" + id + '\'' +
+                ", userID='" + userID + '\'' +
+                ", driverID='" + driverID + '\'' +
+                ", smallPackagesQuantity='" + smallPackagesQuantity + '\'' +
+                ", mediumPackagesQuantity='" + mediumPackagesQuantity + '\'' +
+                ", bigPackagesQuantity='" + bigPackagesQuantity + '\'' +
+                ", from='" + from + '\'' +
+                ", destination='" + destination + '\'' +
+                ", fromName='" + fromName + '\'' +
+                ", destinationName='" + destinationName + '\'' +
+                ", date='" + date + '\'' +
+                ", recipient='" + recipient + '\'' +
+                ", recipientPhone='" + recipientPhone + '\'' +
+                ", price='" + price + '\'' +
+                ", packageStatus=" + packageStatus +
+                '}';
     }
 }

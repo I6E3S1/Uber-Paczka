@@ -6,5 +6,8 @@ package com.example.dominik.uberpaczka.order.usable;
 
 public enum PackageStatus {
 
-    waiting_for_driver, driver_is_coming, package_on_the_way, package_delivered
+    waiting_for_driver,
+    driver_is_coming,
+    package_on_the_way,
+    package_delivered
 }
